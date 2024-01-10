@@ -1,0 +1,6508 @@
+Imagine you have a basket of apples, each apple representing a number stored in an array called "nums." We want to create another basket called "runningSum" to keep track of the cuative total of apples as we pick them one by one from the original basket.
+
+To clarify, the runningSum at a specific position 'i' is like counting the total number of apples you have picked from the original basket up to that point, including the apple at position 'i.'
+
+Your task is to determine the number of apples in the runningSum basket at each position 'i' and return the runningSum basket as the final result.
+
+Input Format:
+-------------------
+Line-1: A number, size of the array
+Line-2: N line separated integers, number of apples
+
+Output Format:
+-------------------
+Line-1: Space separated two numbers, indices
+
+
+Sample Input:
+--------------
+4
+1 2 3 4
+
+Sample Output:
+---------------
+1 3 6 10
+
+
+Sample Input:
+--------------
+5
+1 1 1 1 1
+
+Sample Output:
+--------------
+1 2 3 4 5
+
+
+
+
+
+
+
+import java.util.*;
+public class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int size=sc.nextInt();
+        int arr[]=new int[size];
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+        int cummulativeSum=0;
+        for(int i=0;i<size;i++){
+            cummulativeSum=cummulativeSum+arr[i];
+            System.out.print(cummulativeSum+" ");
+        }
+        
+    }
+}
+
+
+
+
+
+
+=====================================================================================
+In a bag filled with an assortment of coins, each marked with a unique integer value, you are tasked with finding two distinct coins. 
+The sum of the values on these two coins should equal a specified target value. 
+
+Your goal is to determine the indices (positions) of these two coins within the bag. 
+
+It is guaranteed that there is exactly one solution to this problem, and each coin can only be used once. 
+
+Input Format:
+-------------------
+Line-1: A number, size of the array
+Line-2: N line separated integers, coins[]
+Line-3: A number, target sum
+
+Output Format:
+-------------------
+Line-1: Space separated two numbers, indices
+
+Sample Input:
+--------------
+4
+2 7 11 15
+9
+
+Sample Output:
+---------------
+0 1
+
+
+Sample Input:
+--------------
+3
+3 2 4
+6
+
+Sample Output:
+--------------
+1 2
+
+
+
+
+
+
+
+import java.util.*;
+public class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int size=sc.nextInt();
+        int arr[]=new int[size];
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+        int target=sc.nextInt();
+        boolean found=false;
+        for(int i=0;i<size;i++){
+            for(int j=i+1;j<size;j++){
+                if(arr[i]+arr[j]==target){
+                    System.out.print(i +" "+j);
+                    found = true;
+                    break;
+                }
+            }
+            if (found) break;
+        }
+    }
+}
+
+
+========================================================================================
+A English teacher, would like to present a language challenge. 
+Imagine you have a sentence written with words and spaces. Your task is to determine the length of the final word in this sentence. 
+A word, in this context, is defined as a group of characters without any spaces in between. 
+
+Your goal is to find the length of the very last word in this sentence.
+
+Input Format:
+-------------
+Line-1: A string, represents a sentence
+
+Output Format:
+--------------
+Line-2: An integer result, represents the lenght of last word
+
+Sample Input:
+--------------
+"Hello World"
+
+Sample Output:
+---------------
+5
+
+
+Sample Input:
+--------------
+"   fly me   to   the moon  "
+
+Sample Output:
+---------------
+4
+
+
+
+
+
+
+import java.util.*;
+public class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine().trim();
+        String words[]=str.split(" ");
+        String lastWord=words[words.length-1];
+        int lengthOfLastWord=lastWord.length();
+        System.out.println(lengthOfLastWord);
+    }
+}
+
+
+
+==========================================================================
+Christina has given a task to break his friends code 
+he will given all lower case alphabets  and code as the input 
+Christina has to figure the text from the code and display the text 
+
+Input - The first line of input consists of lower case alphabets and code 
+The first alphabet letter will given 01, second alphabet will be given 02, and so on 
+Output - Break the code and display the string 
+
+
+Sample Test Case - 1 
+input =
+abcdefghijklmnopqrstuvwxyz
+110525
+
+Explantion - 
+From the above test case we have 'a' has '01', 'b' has '02', and finally 'z' has '26' 
+where each alphabet will be assigned a two digit number 
+and for the code 110525 the characters will be 11 as 'k', 05 as 'e' and 25 as 'y' 
+so the output is "key" 
+
+Sample Test Case - 2
+input =
+qpwoeirutyalskdjfhgzmxncbv
+131013090521
+output = system
+
+
+Explantion - From the above test case we have 'q' as '01' , 'p' as '02' and finally 'v' as '26'
+and for the code 131013090521 we have the following code 
+13-s
+10-y
+13-s
+09-t
+05-e
+21-m
+
+so the output is system
+
+
+
+
+import java.util.*;
+public class test{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.next();
+        char sArr[]=str.toCharArray();
+        String code=sc.next();
+        StringBuilder text=new StringBuilder();
+        for(int i=0;i<code.length();i=i+2){
+            Integer num=Integer.parseInt(code.substring(i,i+2));
+            text.append(sArr[num-1]);
+        }
+        System.out.println(text.toString());
+    }
+}
+====================================================================================================
+Mr.Bob and Mr.Cob are working on a Military Mission. 
+They are supposed to encode the message and send the message to the under-cover team.
+
+Where Cob has written a script. Where the Script says double all the ascii values other than mentioned in the bracket
+(97,101,105,111,117,65,69,73,79,85) and place a '#' in between. 
+
+Help Bob in writing the Code. 
+
+
+Sample Test Case-1
+input = attack the enemy
+output = at#tt#tac#ck#k t#th#he en#nem#my#y
+
+
+
+
+
+
+
+import java.util.*;
+public class code{
+    public static void changeString(String str){
+        StringBuilder sb=new StringBuilder();
+        for(int i=0;i<str.length();i++){
+            switch(str.charAt(i)){
+            case 'a':
+            case 'e':
+            case 'i':
+            case 'o':
+            case 'u':
+            case 'A':
+            case 'E':
+            case 'I':
+            case 'O':
+            case 'U':
+            case ' ':
+                sb.append(str.charAt(i));
+                break;
+            default:
+                sb.append(""+str.charAt(i) + '#' +str.charAt(i));
+        }
+    }
+    System.out.print(sb);
+}
+public static void main(String args[]){
+    Scanner sc=new Scanner(System.in);
+    String str=sc.nextLine();
+    changeString(str);
+}
+}
+
+
+====================================================================================
+Somu is playing a game. The Game Rules are as follows.
+
+A word will be given, where Ramu has to replace the letters of the word with V/C
+If the letter is a vowel it will be de denoted by upper case letter ‘V’ and 
+if the letter is a consonant it will be denoted by upper case letter ‘C’. 
+
+Note - The output will contain a word containing alternating sequence of ‘C’ and ‘V’.
+It is not permissible to have two or more consecutive V or C in Sequence.
+Letters will be only(a-z/A-Z)
+
+input = hello 
+output = CVCV
+
+Explanation - When we convert the above  "hello" we have CVCCV 
+but for the output It is not permissible to have two or more consecutive V or C in Sequence.
+so CVCCV changes to CVCV 
+
+
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String inputWord = scanner.nextLine();
+        String result = convertToCVAlternating(inputWord);
+        System.out.println(result);
+    }
+
+    private static String convertToCVAlternating(String word) {
+        StringBuilder result = new StringBuilder();
+        word = word.toUpperCase();
+
+        char prevChar = ' ';  
+        for (char c : word.toCharArray()) {
+            if (isVowel(c) && c != prevChar) {
+                result.append('V');
+                prevChar = 'V';
+            } else if (isConsonant(c) && c != prevChar) {
+                
+                if (prevChar == 'C') {
+                    continue;
+                }
+                result.append('C');
+                prevChar = 'C';
+            }
+        }
+
+        return result.toString();
+    }
+
+    private static boolean isVowel(char c) {
+        return c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U';
+    }
+
+    private static boolean isConsonant(char c) {
+        return c >= 'A' && c <= 'Z' && !isVowel(c);
+    }
+}
+
+
+================================================================================================================
+Tony a school boy has given an assignment by his teacher.
+His teacher told him to write each alternative line in reverse order as shown below
+Help Tony to do the same. 
+
+Sample Input and Output Statements
+
+Sample Test Case -1 
+input = 4
+output =
+1
+3 2
+4 5 6
+10 9 8 7
+
+
+Sample Test Case - 2
+input = 1
+output = 1
+
+
+
+
+import java.util.*;
+public class pattern{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int num=sc.nextInt();
+        boolean direction=true;
+        int rev=0,count=1;
+        for(int i=1;i<=num;i++){
+            if(direction==true){
+                for(int j=1;j<=i;j++,count++){
+                    System.out.print(count+" ");
+                    direction=false;
+                }
+                
+            }
+            else{
+                rev=count+i-1;
+                for(int j=1;j<=i;j++,rev--,count++)
+                {
+                    System.out.print(rev+" ");
+                    direction=true;
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+============================================================================================
+Mona is celebrating the anniversary of her company. 
+For a Surprise, she has put many candles on the cake. 
+Monas employees  were asked to guess how many candles she will be blowing.
+Mona gives them the clue saying that the she’ll only be able to blow out the tallest ones.
+
+
+For example, if Monas company is turning  7 years old,
+and the cake will have candles of height 7,6,5,7,4,6,7 
+she will be able to blow out 3 candles successfully, 
+since the tallest candle is of height '7' and there are '3' such
+candles.
+
+Help Monas employees to find out how many candles she will be blowing.
+
+Note - The first line of input contains the number of candles followed by candles sizes
+
+input = 4
+5 3 1 5
+output = 2
+
+ 
+Explanation
+We have one candle of height 1, one candle of height 3, and two candles of height 5. 
+Mona blows out the tallest candles, meaning the candles where height = 5. 
+Because there are 2 such candles, we print 2 as the output 
+
+
+input = 5
+1 4 1 4 4
+output = 3
+
+
+input = 5
+1 2 3 4 5
+output = 1
+
+
+
+
+
+
+import java.util.*;
+public class blow{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int size=sc.nextInt();
+        int arr[]=new int[size];
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+        int max=arr[0];
+        int count=0;
+        for(int i=0;i<size;i++){
+            if(arr[i]>max){
+                max=arr[i];
+                count=1;
+            }
+            else{
+                if(arr[i]==max){
+                    count=count+1;
+                }
+            }
+
+        }
+        System.out.println(count);
+        
+    }
+}
+
+
+
+=====================================================================================================
+Ram a primary school student is given a group of numbers. 
+His teacher asked to form a pair of good numbers from those numbers. 
+The numbers are said to be a good pair if it satisfies the following condition 
+		a) a[j]==a[i] 
+		b) j>i. 
+Print the number of good pairs in the given group of numbers. 
+
+
+input = 6
+1 2 3 1 1 3
+output = 4
+
+Explanation: There are 4 good pairs (0,3), (0,4), (3,4), (2,5) 0-indexed.
+
+input = 4
+7 7 7 7
+output = 6
+
+(0,1) (0,2) (0,3) (1,2) (1,3) (2,3)
+
+Total 6 pairs 
+SO the output is 6
+
+
+
+
+import java.util.*;
+public class Test{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int size=sc.nextInt();
+        int arr[]=new int[size];
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+        int count=0;
+        for(int i=0;i<size;i++){
+            for(int j=i+1;j<size;j++){
+                if(arr[j]==arr[i]&&j>i){
+                    count=count+1;
+                }
+            }
+        }
+        System.out.println(count);
+    }
+}
+
+
+
+====================================================================================
+Sony, a student has given a date by his teacher. 
+The teacher taught him the Dates and Calenders in the class today. 
+The teacher wants to test the Sony whether he understood or not.
+
+She gives a date to sony and ask to print the following date. 
+
+Help Sony to print the next date. 
+
+Note - If the Date is invalid, Sony has to print -1 
+Dont Use Any Pre Defined Date and Time API 
+
+Input - The Input contains the following format "DD-MM-YYYY"
+Output - Print the output int the following format "DD-MM-YYYY"
+
+input = 30-11-2000
+output = 01-12-2000
+
+input = 31-09-2000
+output = -1 
+
+There will be only 30 days in the September month. So prints -1 
+
+
+
+
+
+
+
+import java.util.*;
+public class calender{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String date=sc.nextLine();
+        String arr[]=date.split("-");
+        int day=Integer.parseInt(arr[0]);
+        int month=Integer.parseInt(arr[1]);
+        int year=Integer.parseInt(arr[2]);
+        boolean valid=true;
+        int daysInMonth[]={31,28,31,30,31,30,31,31,30,31,30,31};
+            if(month<1 || month>12 || day<1 || day>daysInMonth[month-1]){
+                valid=false;
+            }
+            else if(month==2 && isLeapYear(year) && day>29){
+                valid=false;
+            }
+            else if(month==2 && !isLeapYear(year) && day > 28){
+                valid=false;
+            }
+            String nextDate;
+            if(valid){
+                day++;
+                if(day>daysInMonth[month-1]){
+                    day=1;
+                    month++;
+                    if(month>12){
+                        month=1;
+                        year++;
+                    }
+                }
+                nextDate=String.format("%02d-%02d-%04d",day,month,year);
+                }
+                else{
+                    nextDate="-1";
+            }
+                    System.out.println(nextDate);
+            
+        
+    }
+    public static boolean isLeapYear(int year){
+        return (year%4==0 && year%100!=0) || (year%400==0); 
+    }
+}
+
+
+===========================================================================================
+Ramu is playing a game on a 2D Plane, 
+he has given n points with co-ordinates p[i]=(x,y);
+
+He has to visit all the points in the order given by points in minimum time. 
+
+His moves can be as follows.
+
+In 1 second, he can go  vertically by 1 unit,go horizontally by 1 unit, or
+go diagonally sqrt(2) units (in other words, go one 1 unit vertically then 1 unit horizontally in 1 second).
+
+he has to visit the points in the same given order as they appear in the given list.
+He is also allowed to pass through points that appear later in the order, but these do not count as visits.
+
+Input - The First line of input consists of the Number of Points(n) followed by n points
+
+Sample Test Case - 1
+Input = 3
+1 1
+3 4
+-1 0
+output = 7
+
+Explanation: One optimal path is [1,1] -> [2,2] -> [3,3] -> [3,4] -> [2,3] -> [1,2] -> [0,1] -> [-1,0]   
+Time from [1,1] to [3,4] = 3 seconds 
+Time from [3,4] to [-1,0] = 4 seconds
+Total time = 7 seconds
+
+
+Sample Test Case - 2
+Input = 2
+3 2
+-2 2
+output = 5
+
+
+
+
+
+import java.util.*;
+public class plane{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int num=sc.nextInt();
+        int points[][]=new int[num][2];
+        for(int i=0;i<num;i++){
+            points[i][0]=sc.nextInt();
+            points[i][1]=sc.nextInt();
+        }
+        int totalTime=0;
+        for(int i=0;i<num-1;i++){
+            int x1=points[i][0];
+            int y1=points[i][1];
+            
+            int x2=points[i+1][0];
+            int y2=points[i+1][1];
+            
+            int disX=Math.abs(x2-x1);
+            int disY=Math.abs(y2-y1);
+            
+            totalTime=totalTime+Math.max(disX,disY);
+        }
+        System.out.println(totalTime);
+    }
+}
+================================================================================================================
+Shyam is Building a Number triangle of the below type.
+
+His friend asked him to write the number pyramid for various numbers.
+
+Shyam is only able to write the number pyramid for one number.
+
+Help Shyam to write the number triangle for all given inputs
+
+input = 5
+output = 
+0
+505
+45054
+3450543
+234505432
+12345054321
+
+input = 6
+output =
+0
+606
+56065
+4560654
+345606543
+23456065432
+1234560654321
+
+
+
+
+
+
+
+
+import java.util.*;
+class Test{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        System.out.print("0\n");
+        for(int i=n;i>0;i--){
+            for(int j=i;j<=n;j++){
+                System.out.print(j);
+            }
+            System.out.print("0");
+            for(int j=n;j>=i;j--){
+                System.out.print(j);
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+================================================================================================================
+You've given a m*n grid of boxes, each filled with a number.
+Your task is to determine whether or not each of the main diagonal's boxes 
+is filled with the same number.
+
+If filled with the same, print true; otherwise, false.
+
+The First Line of input contains the size of the Grid (M Rows,N Columns) 
+followed by Row Wise Grid Elements. 
+
+
+Sample Input-1:
+---------------
+3 4
+1 2 3 4
+5 1 2 3 
+9 5 1 2
+
+Sample Output-1:
+----------------
+true
+
+Explanation:
+------------
+In the above grid, the diagonals are:
+[9], [5, 5], [1, 1, 1], [2, 2, 2], [3, 3], [4].
+In each diagonal all the boxes are filled with the same number, 
+so the answer is True.
+
+
+
+
+
+
+
+import java.util.*;
+class Test{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int r=sc.nextInt();
+        int c=sc.nextInt();
+        int arr[][]=new int[r][c];
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                arr[i][j]=sc.nextInt();
+            }
+        }
+        int f=1;
+        for(int i=1;i<r;i++){
+            for(int j=1;j<c;j++){
+                if(arr[i][j]!=arr[i-1][j-1]){
+                    f=0;
+                    break;
+                }
+            }
+        }
+        if(f==0){
+            System.out.print("false");
+        }
+        else{
+            System.out.print("true");
+        }
+    }
+}
+
+
+
+
+
+
+
+==================================================================================================================
+Shyam writes a sentence in different manner. 
+His teacher notices that he writes a sentence in which when we check it from left to right 
+or right to left all the characters are equal. 
+
+If he writes all sentences in such format print 1 else print -1
+
+
+input =a man a plan a canal panama
+output = 1
+
+Explanation -
+
+in the above  example first character is 'a' last character is 'a'
+second character is 'm' last second character is 'm' and comparing so on all characters should be equal
+
+
+input =do nine men interpret nine men i nod
+output = 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+================================================================================================================
+You are given two strings s1 and s2 of equal length. 
+A string swap is an operation where you choose two indices in a string(not necessarily different) and 
+swap the characters at these indices.
+
+Return true if it is possible to make both strings equal by performing at most one string swap on exactly one of the strings. 
+Otherwise, return false.
+
+ 
+
+Sample Input1:
+-------------
+bank
+kanb
+Sample Output1: 
+--------------
+true
+
+Explanation: For example, swap the first character with the last character of s2 to make "bank".
+
+Sample Input2:
+-------------
+hyderabad
+secunderabad
+
+Sample Output2: 
+--------------
+false
+
+Explanation: It is impossible to make them equal with one string swap.
+
+Sample Input3:
+-------------
+kmit
+kmit
+
+Sample Output3: 
+--------------
+true
+
+Explanation: The two strings are already equal, so no string swap operation is required.
+
+
+
+
+
+
+
+
+
+import java.util.*;
+public class swap{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String s1=sc.next();
+        String s2=sc.next();
+        boolean result=false;
+        if(s1.equals(s2)){
+            result=true;
+        }
+        if(s1.length() != s2.length()){
+            System.out.println("false");
+        }
+        else{
+            int count=0;
+            for(int i=0;i<s1.length();i++){
+                if(s1.charAt(i)!=s2.charAt(i)) 
+                ++count;
+            }
+            if(count<=2)
+            System.out.println("true");
+            else
+            System.out.println("false");
+        }
+        
+    }
+}
+
+
+
+
+=================================================================================================================
+Arjun is playing a word game in his tab. When he start the game , It displays a
+word and he has to check for any two adjacent characters which are same.If found 
+he has to select those two characters by tapping, so that both characters will
+be deleted from the word and the word size shrinks by 2. This process to be 
+repeated until the word has no two adjacent characters are same.
+You task is to help Arjun to perform the above task and Return the final word
+obtained.
+
+Input Format:
+-------------
+Line-1: A string represents the word.
+
+Output Format:
+--------------
+Return a string or empty string.
+
+Constraints:
+------------   
+    1 <= word.length <= 10^5   
+    word consists only lower case letters.
+
+Sample Input-1:
+---------------
+pqqprs
+
+Sample Output-1:
+----------------
+rs
+
+Explanation:
+-------------
+Initially , Delete two 'q's then the word will be 'pprs'. Now Delete two 'p's 
+then the word will be rs.
+
+Sample Input-2:
+---------------
+pqqqprrs
+
+Sample Output-2:
+----------------
+pqps
+
+Explanation:
+-------------
+Initially , Delete two 'q's then the word will be 'pqprrs'. Now Delete two 'r's
+then the word will be pqps.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+==================================================================================================================
+Mr Somanath is a math teacher. He is given a problem to his students.
+The students are given a number N, and the student has to perform following step:
+   - Add each digit of the number and add the result to N
+Repeat this procedure until N becomes a single digit number.
+
+Your task is to help the students to perform the above steps and 
+print the resultant single digit number N.
+
+Input Format:
+-------------
+An integer, number N.
+
+Output Format:
+--------------
+Print an integer result.
+
+
+Sample Input-1:
+---------------
+95
+
+Sample Output-1:
+----------------
+5
+
+Explanation: 
+------------
+95 => 9 + 5 = 14
+14 => 1 + 4 = 5
+Answer is 5
+
+
+Sample Input-2:
+---------------
+765
+
+Sample Output-2:
+----------------
+9
+
+
+
+
+
+
+
+
+
+
+===========================================================================================================================
+write a java program to read a number and print the factorial of given number
+
+ex:
+input =1
+output =1
+
+input =3
+output =6
+
+input =5
+output =120
+
+
+
+
+
+
+import java.math.BigInteger;
+import java.util.Scanner;
+class Test{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        String fact=factorial(n);
+        System.out.println(fact);
+    }
+    public static String factorial(int n){
+        BigInteger fact=new BigInteger("1");
+        for(int i=1;i<=n;i++){
+            fact =fact.multiply(new BigInteger(i+ ""));
+        }
+        return fact.toString();
+    }
+}
+
+
+
+===================================================================================================================
+write a java program to print fibonacci serias for given number
+ex:
+
+input = 2
+output = 0 1
+
+input = 3
+output =0 1 1
+
+input =4
+output =0 1 1 2
+
+input  =10
+output =0 1 1 2 3 5 8 13 21 34
+
+
+
+
+
+
+
+
+
+
+
+import java.math.BigInteger;
+import java.util.*;
+class Test{
+    public static BigInteger fibonacci2(int n){
+        List <BigInteger> f=new ArrayList<>();
+        f.add(BigInteger.ZERO);
+        f.add(BigInteger.ONE);
+        
+        for(int i=2;i<n+1;i++)
+            f.add(i,f.get(i-1).add(f.get(i-2)));
+            
+        int fn=(int) n;
+        return f.get(fn);
+    }
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int N=sc.nextInt();
+        System.out.print(0+" ");
+        for(int i=1;i<N;i++){
+            System.out.print(fibonacci2(i)+" ");
+        }
+    }
+}
+
+
+
+
+=================================================================================================
+Given a staircase of N steps and you can either climb 1 or 2 steps at a given time. The task is to return the count of distinct ways to climb to the top.
+Note: The order of the steps taken matters.
+Examples:
+Input: N=3
+
+Output: 3
+
+Explanation:
+There are three distinct ways of climbing a staircase of 3 steps :
+[1, 1, 1], [2, 1] and [1, 2].
+
+
+Input:  N = 2
+Output: 2
+Explanation:
+There are two distinct ways of climbing a staircase of 3 steps :
+[1, 1] and [2].
+
+Input: n = 4
+Output: 5
+(1, 1, 1, 1), (1, 1, 2), (2, 1, 1), (1, 2, 1), (2, 2) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+========================================================================================================
+Given line, print the string in reverse(use recursion)
+Note: don't use reverse() method in stringbuilder)
+
+ex:
+input =keshav memorial
+output =lairomem vahsek
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=============================================================================================
+Shyam writes a sentence in different manner. 
+His teacher notices that he writes a sentence in which when we check it from left to right 
+or right to left all the characters are equal. 
+
+If he writes all sentences in such format print 1 else print -1
+
+
+input =a man a plan a canal panama
+output = 1
+
+Explanation -
+
+in the above  example first character is 'a' last character is 'a'
+second character is 'm' last second character is 'm' and comparing so on all characters should be equal
+
+
+input =do nine men interpret nine men i nod
+output = 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import java.util.*;
+class Test{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String st=sc.nextLine();
+        String sa[]=st.split("");
+        int f=1;
+        int j=sa.length-1;
+        int i=0;
+        while(i<j){
+            while(sa[i].equals(" ")){
+                i++;
+            }
+            while(sa[j].equals(" ")){
+                j--;
+            }
+            if(!sa[i].equals(sa[j])){
+                f=0;
+                break;
+            }
+            i++;
+            j--;
+        }
+        if(f==0){
+            System.out.print("-1");
+        }
+        else{
+            System.out.print("1");
+        }
+    }
+}
+
+=======================================================================================================================================================
+/*You are playing a game. There are N boxes placed in a row (0-indexed), 
+every box has some points. You need to play the game with the following rules:
+	- Initially your score is  '0' points.
+	- Suppose the box has P points in it.
+	  if p>0 you will gain P points, if p<0 you will loose P points.
+	- You are allowed to choose any number of consecutive boxes, atleast 1 box.
+	
+You are given the points in the N boxes as points[]. 
+Your target is to maximize your score, and return the highest score possible. 
+
+Input Format:
+-------------
+Line-1: An integer N.
+Line-2: N space separated integers, points[].
+Output Format:
+--------------
+An integer, print the highest score.
+
+Sample Input-1:
+---------------
+9
+-3 1 -2 4 -2 2 3 -5 4
+Sample Output-1:
+----------------
+7
+Explanation:
+------------
+By selecting consecutive boxes are [4,-2,2,3] has the highest score is 7
+
+Sample Input-2:
+---------------
+2
+1 -2
+Sample Output-2:
+----------------
+1
+Explanation:
+------------
+By picking the box is [1] has the highest score is 7
+*/
+import java.util.*;
+import java.lang.Math;
+public class MaxSubArrayit{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        int curr_sum=arr[0];
+        int max_sum=arr[0];
+        for(int i=1;i<n;i++){
+            curr_sum=Math.max(arr[i],curr_sum+arr[i]);
+            max_sum=Math.max(max_sum,curr_sum);
+        }
+        System.out.println(max_sum);
+    }
+}
+==============================================================================================================
+/*Mr.Sathya is attending mathematics exam, and he has to answer following question.
+Given an integer array nums, return the largest perimeter of a triangle with a non-zero area,
+formed from three of these lengths.
+Wtih your programming skills, help him. 
+If it is impossible to form any triangle of a non-zero area, return 0.
+
+input format: comma seperated integers 
+output format : an integer
+ 
+
+Example 1:
+
+Input: nums = 2,1,2
+Output: 5
+Explanation: You can form a triangle with three side lengths: 1, 2, and 2.
+
+Example 2:
+
+Input: nums = 1,2,1,10
+Output: 0
+Explanation: 
+You cannot use the side lengths 1, 1, and 2 to form a triangle.
+You cannot use the side lengths 1, 1, and 10 to form a triangle.
+You cannot use the side lengths 1, 2, and 10 to form a triangle.
+As we cannot use any three side lengths to form a triangle of non-zero area, we return 0.
+ 
+Constraints:
+
+3 <= nums.length <= 104
+1 <= nums[i] <= 106
+
+
+Without loss of generality, say the side lengths of the triangle are a <= b <= c
+The necessary and sufficient condition for these lengths to form a triangle 
+of non-zero area is (a+b)>c
+*/
+
+
+
+
+
+
+
+
+
+
+/*
+A sequence of numbers is called an arithmetic progression if the difference between any two consecutive elements is the same.
+
+Given an array of numbers arr, return true if the array can be rearranged to form an arithmetic progression. Otherwise, return false.
+
+input format : integer number n
+               n number of integers
+output format : true or false
+Example 1:
+
+Input: 3
+3 5 1
+Output: true
+Explanation: We can reorder the elements as [1,3,5] or [5,3,1] with differences 2 and -2 respectively, between each consecutive elements.
+Example 2:
+
+Input: arr = 3
+1 2 4
+Output: false
+Explanation: There is no way to reorder the elements to obtain an arithmetic progression.
+ 
+
+Constraints:
+
+2 <= arr.length <= 1000
+-106 <= arr[i] <= 106
+
+*/
+import java.util.*;
+public class ArithProgression{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        Arrays.sort(arr);
+        for(int i=0;i<n-2;i++){
+            if(arr[i+1]-arr[i]==arr[i+2]-arr[i+1]){
+                System.out.println("true");
+            }
+            else{
+                System.out.println("false");
+            }
+        }
+    }
+}
+
+=====================================================================================================
+You are a teacher managing an examination with a set of student IDs 
+attending within a specific range [start, end]. 
+The list of attending students is sorted and contains unique IDs within this range.
+
+A student ID is considered absent if it falls within the range [start, end] 
+but is not present in the attendance list.
+
+Your task is to generate the most concise and organized list of ranges 
+that accurately identifies all the absent student IDs. 
+These ranges should cover every missing ID within the given range 
+and should not include any of the present student IDs in the ranges.
+
+Input Format:
+-------------
+Line 1: start range
+Line 2: end range
+Line 3: Space separated id's
+
+Output Format:
+-------------
+Ranges of missing id's, refer sample output
+
+Sample Input1:
+--------------
+0
+99
+0 1 3 50 75
+
+Sample Output1:
+--------------
+[2,2]
+[4,49]
+[51,74]
+[76,99]
+
+Sample Input2:
+--------------
+-1
+-1
+-1
+
+Sample Output1:
+--------------
+-1
+
+Explanation: There are no missing ranges since there are no missing numbers.
+
+NOTE: Print -1 for boundary conditions
+
+
+
+
+
+
+
+
+
+
+=============================================================================================================================================
+Given an integer num, return the number of steps to reduce it to zero.
+
+In one step, if the current number is even, you have to divide it by 2, 
+otherwise, you have to subtract 1 from it.
+
+Input Format:
+-------------
+Line 1: A number
+
+Output Format:
+--------------
+Line 1: A number
+
+Sample Input 1:
+---------------
+14
+
+Sample Output 1:
+----------------
+6
+
+Explanation: 
+Step 1) 14 is even; divide by 2 and obtain 7. 
+Step 2) 7 is odd; subtract 1 and obtain 6.
+Step 3) 6 is even; divide by 2 and obtain 3. 
+Step 4) 3 is odd; subtract 1 and obtain 2. 
+Step 5) 2 is even; divide by 2 and obtain 1. 
+Step 6) 1 is odd; subtract 1 and obtain 0.
+
+
+Sample Input 2:
+---------------
+8
+
+Sample Output 2: 
+----------------
+4
+
+Explanation: 
+Step 1) 8 is even; divide by 2 and obtain 4. 
+Step 2) 4 is even; divide by 2 and obtain 2. 
+Step 3) 2 is even; divide by 2 and obtain 1. 
+Step 4) 1 is odd; subtract 1 and obtain 0.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+========================================================================================================================
+There is a switch-board made by an electrician,
+If you turn on any two adjacent switches, it will cause short-circuit
+and damage the switch-board.
+
+You are given N integers(only 0's and 1's), Indiactes current status of the switch board with N switches,
+where 1 indiactes switch is ON and 0 indiactes switch is OFF. 
+And an integer K, more number of switches to be turned ON.
+
+Return true if and only if you can turn ON all the K switches, without causing any damage to switch-board.
+Otherwise return fasle.
+
+Input Format:
+-------------
+Line-1: Two integers N and K, number of switches, and more number of switches to be ON
+Line-2: N space separated integers, only 0's and 1's.
+
+Output Format:
+--------------
+Print a boolean value.
+
+
+Sample Input-1:
+---------------
+5 1
+1 0 0 0 1
+
+Sample Output-1:
+----------------
+true
+
+Sample Input-2:
+---------------
+5 2	
+1 0 0 0 1
+
+Sample Output-2:
+----------------
+false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================
+Write a Code to Find the Sum of the Array Elements 
+
+Use- Recursion
+
+Note - The First Line of input contains the size of array followed by array elements
+
+input = 5
+1 2 3 4 5
+output = 15
+
+input = 4
+10 20 30 40
+output= 100
+
+
+
+
+
+
+import java.util.*;
+public class Test{
+    public static int sum(int arr[],int n){
+        if(n==0){
+            return 0;
+        }
+        else{
+            return arr[n-1]+sum(arr,n-1);
+        }
+    }
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        int result=sum(arr,n);
+        System.out.println(result);
+    }
+}
+====================================================================================================
+A maths professor gave his students the following maths function f(num)
+          
+             |  1,           num==0
+    f(num)---|  f(num-1)-1,  num is odd
+             |  f(num-1)+num,num is even
+             
+The Students have to implement a recursive function f(num) for any given 'n' value 
+
+
+
+input = 9
+output = 16
+
+input = 24
+output = 145 
+             
+input = 0
+output = 1
+
+
+
+
+import java.util.*;
+class Test{
+    public static int f(int num){
+        if(num==0){
+            return 1;
+        }
+        else if(num%2==1){
+            return f(num-1)-1;
+        }
+        else{
+            return f(num-1)+num;
+        }
+    }
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        System.out.print(f(n));
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=====================================================================================================
+Gopal a third class boy writes a number in single digit fashion. 
+Given an group of positive numbers nums, help gopal to write the individual digits of each given number 
+
+Note - The first line of input contains the size of the array followed by array elements
+
+input = 4
+13 25 83 77
+output = 1 3 2 5 8 3 7 7
+
+Explanation: 
+- The separation of 13 is [1,3].
+- The separation of 25 is [2,5].
+- The separation of 83 is [8,3].
+- The separation of 77 is [7,7].
+
+Input = 4
+7 1 3 9
+Output = 7 1 3 9
+Explanation: The separation of each integer in nums is itself.
+
+Input = 2
+100 200 
+Ouput = 1 0 0 2 0 0
+
+
+
+
+
+import java.util.*;
+public class Test{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        for(int i=0;i<n;i++){
+            String str=String.valueOf(arr[i]);
+            for(char digit:str.toCharArray()){
+                System.out.print(digit+" ");
+            }
+        }
+        System.out.println();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+==========================================
+
+/*Given an array nums of n integers where nums[i] is in the range [1, n], 
+return an array of all the integers in the range [1, n] that do not appear in nums.
+
+ input =integer n
+        n number of integers
+output = list of integer numbers
+
+Example 1:
+
+Input: nums = 8
+4 3 2 7 8 2 3 1
+Output: [5,6]*/
+import java.util.*;
+public class MissingNumber{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        HashSet<Integer> set=new HashSet<Integer>();
+            for(int i=0;i<n;i++){
+            set.add(arr[i]);
+            }
+        List<Integer> result=new ArrayList<Integer>();
+        for(int i=1;i<=arr.length;i++){
+            if(!set.contains(i));
+            result.add(i);
+        }
+        System.out.print(result);
+        
+    }
+    //System.out.print(result);
+}
+=========================================
+/*Given an integer array arr, return true if there are three consecutive odd numbers in the array. Otherwise, return false.
+
+Example 1:
+
+Input:4
+2 6 4 1
+Output: false
+Explanation: There are no three consecutive odds.
+
+Example 2:
+
+Input:9 
+1 2 34 3 4 5 7 23 12
+Output: true
+Explanation: [5,7,23] are three consecutive odds.*/
+import java.util.*;
+public class ThreeOdds{
+    public static boolean threeOdds(int arr[]){
+        int count=0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]%2==1){
+                count++;
+            }
+            else{
+                count=0;
+            }
+            if(count==3){
+                return true;
+            }
+            
+        }
+        return false;
+    }
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        System.out.println(threeOdds(arr));
+        
+    }
+}
+==========================================
+/*Given an array of integers nums, return the number of good pairs.
+
+A pair (i, j) is called good if nums[i] == nums[j] and i < j.
+
+ 
+
+Example 1:
+
+Input: 6
+ 1 2 3 1 1 3
+Output: 4
+Explanation: There are 4 good pairs (0,3), (0,4), (3,4), (2,5) 0-indexed.
+
+Example 2:
+
+Input: 4
+1 1 1 1
+Output: 6
+Explanation: Each pair in the array are good.
+Example 3:
+
+Input: 3
+1 2 3
+Output: 0*/
+import java.util.*;
+public class IdenticalPairs{
+    public static int goodPairs(int arr[]){
+        int count=0;
+        for(int i=0;i<arr.length;i++){
+            for(int j=1;j<arr.length;j++){
+                if(arr[i]==arr[j] && i<j){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        System.out.println(goodPairs(arr));
+    }
+}
+==================================================
+/*Given an integer array arr of distinct integers and an integer k.
+
+A game will be played between the first two elements of the array (i.e. arr[0] and arr[1]). In each round of the game, we compare arr[0] with arr[1], the larger integer wins and remains at position 0, and the smaller integer moves to the end of the array. The game ends when an integer wins k consecutive rounds.
+
+Return the integer which will win the game.
+
+It is guaranteed that there will be a winner of the game.
+
+ 
+
+Example 1:
+
+Input: 7
+2 1 3 5 4 6 7
+2
+Output: 5
+Explanation: Let's see the rounds of the game:
+Round |       arr       | winner | win_count
+  1   | [2,1,3,5,4,6,7] | 2      | 1
+  2   | [2,3,5,4,6,7,1] | 3      | 1
+  3   | [3,5,4,6,7,1,2] | 5      | 1
+  4   | [5,4,6,7,1,2,3] | 5      | 2
+So we can see that 4 rounds will be played and 5 is the winner because it wins 2 consecutive games.
+Example 2:
+
+Input: 3
+3 2 1
+10
+Output: 3
+Explanation: 3 will win the first 10 rounds consecutively.
+ */
+ import java.util.*;
+ public class Winner{
+     public static void main(String args[]){
+         Scanner sc=new Scanner(System.in);
+         int n=sc.nextInt();
+         int arr[]=new int[n];
+         for(int i=0;i<n;i++){
+             arr[i]=sc.nextInt();
+         }
+         int won=sc.nextInt();
+         for(int i=0;i<n;i++){
+             if(arr[i]>arr[j]){
+                 arr[0]=arr[i]
+             }
+             else{
+                 arr[0]=arr[j];
+             }
+            }
+            
+         }
+     }
+ }
+====================================================
+/*Given an array nums of n integers where nums[i] is in the range [1, n], 
+return an array of all the integers in the range [1, n] that do not appear in nums.
+
+ input =integer n
+        n number of integers
+output = list of integer numbers
+
+Example 1:
+
+Input: nums = 8
+4 3 2 7 8 2 3 1
+Output: [5,6]*/
+import java.util.*;
+public class MissingNumber{
+    public static int missing(int arr[]){
+        HashSet<Integer> set=new HashSet<Integer>();
+            for(int i=0;i<arr.length;i++){
+            set.add(arr[i]);
+            }
+         List<Integer> result=new ArrayList<Integer>();
+        for(int i=1;i<=arr.length;i++){
+            if(!set.contains(i));
+            result.add(i);
+        }
+    }
+
+    
+    
+    
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        System.out.println(missing(arr));
+        /*HashSet<Integer> set=new HashSet<Integer>();
+            for(int i=0;i<n;i++){
+            set.add(arr[i]);
+            }
+        List<Integer> result=new ArrayList<Integer>();
+        for(int i=1;i<=n;i++){
+            if(!set.contains(i));
+            result.add(i);
+        }
+        */
+        //System.out.print(result);
+        
+    //System.out.print(result);
+}
+
+=========================================================================
+write a program to check, the given string is palindrome or not
+Note: write the logic using recrusion only
+
+ex:
+input =liril
+output =true
+
+input =lirrli
+output =false
+
+
+
+
+import java.util.*;
+public class Test{
+    public static boolean isPlindrome(String s){
+        if(s.length()<=1){
+            return true;
+        }
+        if(s.charAt(0) != s.charAt(s.length()-1)){
+            return false;
+        }
+        return isPlindrome(s.substring(1,s.length()-1));
+    }
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.next();
+        if(isPlindrome(str)){
+            System.out.println("true");
+        }
+        else{
+            System.out.println("false");
+        }
+    }
+}
+==============================================================
+Write an algorithm to determine if a number n is magic number or not
+
+A Magic number is a number defined by the following process:
+
+1) Starting with any positive integer, replace the number by the sum of the squares of 
+its digits.
+2) Repeat the process until the number equals 1 (where it will stay), or 
+it loops endlessly in a cycle which does not include 1.
+3) Those numbers for which this process ends in 1 are magic number.
+Return true if n is a Magic number, and false if not.
+
+
+Input: n = 19
+Output: true
+
+12 + 92 = 82
+82 + 22 = 68
+62 + 82 = 100
+12 + 02 + 02 = 1
+
+
+Input: n = 2
+Output: false
+
+
+
+import java.util.*;
+public class Test{
+    public static boolean magicCheck(int num)
+    {
+    int n=num;
+    if(n==1 || n==7){
+        return true;
+    }
+    int sum=0;
+    while(n>9){
+        while(n>0){
+            int rem=n%10;
+            sum=sum+rem*rem;
+            n=n/10;
+        }
+        n=sum;
+        sum=0;
+    
+    }
+    if(n!=1){
+        return false;
+    }
+    return true;
+    }
+    
+    
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        System.out.print("n=");
+        int num=sc.nextInt();
+        System.out.println(magicCheck(num));
+    }
+}
+
+
+==========================================================================
+You are provided with a string composed of binary digits, and 
+your task is to write a method that calculates the count of set bits within it. 
+
+Input Format:
+-------------------
+A string, consists of 0's and 1's.
+
+Output Format:
+-------------------
+Print an integer result.
+
+
+Sample Input:
+--------------
+01001100001111101101010101111000
+
+Sample Output:
+---------------
+17
+
+
+Sample Input:
+--------------
+11110010111011011011011111100110
+
+Sample Output:
+--------------
+22
+
+
+import java.util.*;
+public class Test{
+    public static int binaryCount(String n){
+        int count=0;
+        for(int i=0;i<n.length();i++){
+            if(n.charAt(i)=='1'){
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String n=sc.next();
+        System.out.println(binaryCount(n));
+    }
+}
+================================================================================
+/*you are working in an office, you need to prepare monthly salary bill. 
+As part of this you need to submit average salary report to your manager 
+excluding minimum and maximum salary.You are given an array of unique integers salary, 
+where salary[i] is the salary of the ith employee.
+
+Return the average salary of employees excluding the minimum and maximum salary.
+
+input format : an integer n
+               n number of integers
+output format: double number
+ 
+Example 1:
+
+Input:=4 
+4000 3000 1000 2000
+
+Output: 2500.00000
+Explanation: Minimum salary and maximum salary are 1000 and 4000 respectively.
+Average salary excluding minimum and maximum salary is (2000+3000) / 2 = 2500
+
+Example 2:
+
+Input: =3
+1000 2000 3000
+
+Output: 2000.00000
+Explanation: Minimum salary and maximum salary are 1000 and 3000 respectively.
+Average salary excluding minimum and maximum salary is (2000) / 1 = 2000
+
+Constraints:
+3 <= salary.length <= 100
+1000 <= salary[i] <= (10)^6
+All the integers of salary are unique.
+*/
+import java.util.*;
+class AvgSalary{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        int min=arr[0];
+        for(int i=0;i<n;i++){
+            if(arr[i]<min){
+                min=arr[i];
+            }
+        }
+        int max=arr[0];
+        for(int i=0;i<n;i++){
+            if(arr[i]>max){
+                max=arr[i];
+            }
+        }
+        int sum=0;
+        for(int i=0;i<n;i++){
+            sum=sum+arr[i];
+        }
+        sum=sum-(min+max);
+        double avg=(double)sum/(n-2);
+        System.out.println(avg);
+        
+    }
+}
+=========================================================================================================================
+/*Mr.Babi is solving a puzzle, the problem is given a sorted array 
+which contains only 0s and 1s. He has to find total number of 1s in the given list, 
+can you write a program to do this task in an efficient way.
+
+*****************************
+input Format : integer number n
+         n number of integers (contains 0s and 1s only in a sorted order)
+output Format :An integer
+*****************************
+Samples
+example 1:
+input =5
+0 0 1 1 1
+output =3
+Example 2:
+input =10
+1 1 1 1 1 1 1 1 1 1
+output =10
+
+*/
+import java.util.*;
+class numberOfOnes{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        int count=0;
+        for(int i=0;i<n;i++){
+        if(arr[i]==1){
+            count++;
+        }
+        }
+        System.out.println(count);
+    }
+}
+=========================================================================================================================
+/*Given a string s, return true if the s can be palindrome.
+
+input format:string
+outputformat :true or false
+
+Example 1:
+Input:aba
+Output: true
+
+Example 2:
+Input:radar
+Output: true
+
+Example 3:
+Input:abc
+Output: false
+
+Constraints:
+1 <= s.length <= 105
+s consists of lowercase English letters.
+*/
+import java.util.*;
+class Palindrome{
+    public static boolean isPalindrome(String s){
+        StringBuilder sb=new StringBuilder(s);
+        sb.reverse();
+        String str=sb.toString();
+        if(s.equals(str)){
+            return true;
+        }
+        return false;
+    }
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.next();
+        System.out.println(isPalindrome(str));
+    }
+}
+==========================================================================================
+/*Given a string s, return true if the s can be palindrome after deleting at most one character from it.
+
+ input format:string
+outputformat :true or false
+
+Example 1:
+Input: aba
+Output: true
+
+Example 2:
+Input: abca
+Output: true
+Explanation: You could delete the character 'c'.
+
+Example 3:
+Input: abc
+Output: false
+ 
+Constraints:
+
+1 <= s.length <= 105
+s consists of lowercase English letters.
+*/
+
+========================================================================================
+/*
+You're given strings jewels representing the types of stones that are jewels, 
+and stones representing the stones you have. Each character in stones is a type of stone you have. 
+You want to know how many of the stones you have are also jewels.
+
+Letters are case sensitive, so "a" is considered a different type of stone from "A".
+jewels and stones consist of only English letters.
+All the characters of jewels are unique.
+
+input format : two strings in two different lines
+output format : integer
+
+Example 1:
+Input: aA
+aAAbbbb
+Output: 3
+
+Example 2:
+Input:z
+ZZ
+Output: 0
+
+Constraints:
+1 <= jewels.length, stones.length <= 50
+*/
+import java.util.*;
+class StringJewels{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String jewel=sc.nextLine();
+        String stone=sc.nextLine();
+        int count=0;
+        for(int i=0;i<jewel.length();i++){
+            for(int j=0;j<stone.length();j++){
+                if(jewel.charAt(i)==stone.charAt(j)){
+                    count++;
+                }
+            }
+        }
+        System.out.println(count);
+    }
+}
+
+
+
+
+
+import java.util.*;
+class StringJewels{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String jewel=sc.nextLine();
+        String stone=sc.nextLine();
+        int count=0;
+        //for(char j:jewels.toCharArray())
+        for(int i=0;i<jewel.length();i++){
+            //for(char s:stones.toCharArray())
+            for(int j=0;j<stone.length();j++){
+                if(jewel.charAt(i)==stone.charAt(j)){
+                    count++;
+                }
+            }
+        }
+        System.out.println(count);
+    }
+}
+
+//using hashset to remove duplicates 
+========================================================================================
+/*Given a string s, return true if the s can be palindrome after deleting at most one character from it.
+
+ input format:string
+outputformat :true or false
+
+Example 1:
+Input: aba
+Output: true
+
+Example 2:
+Input: abca
+Output: true
+Explanation: You could delete the character 'c'.
+
+Example 3:
+Input: abc
+Output: false
+ 
+Constraints:
+
+1 <= s.length <= 105
+s consists of lowercase English letters.
+*/
+import java.util.*;
+class Palindrome1{
+    public static boolean isPalindrome(StringBuilder s){
+        return s.toString().equals(s.reverse().toString());
+    }
+    
+    public static boolean isPalindrome1(String s){
+        int i=0;
+        int j=s.length()-1;
+        while(i<j){
+            StringBuilder str1=new StringBuilder(s).deleteCharAt(i);
+            StringBuilder str2=new StringBuilder(s).deleteCharAt(j);
+            if(isPalindrome(str1) || isPalindrome(str2))
+             return true;
+             i++;
+             j++;
+        }
+        return false;
+    }
+
+}
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+        System.out.println(isPalindrome1(str));
+    }
+}
+
+========================================================================================
+Open AI is working on the below task. 
+The task is as follows 
+++i
+i++
+--i
+i--
+
+By Default i value is given as '0'
+
+The Open AI has to design the code to give the result for this operations  
+ 
+
+Example 1:
+
+Input = --i i++ i++ i++
+Output = 1
+Explanation: The operations are performed as follows:
+Initially, i = 0.
+--i: i is decremented by 1, i =  0 - 1 = -1.
+i++: i is incremented by 1, i = -1 + 1 =  0.
+i++: i is incremented by 1, i =  0 + 1 =  1.
+i++: i is incremented by 1, i =  1 + 1 =  2.
+
+
+
+
+
+
+
+
+========================================================================================
+
+Dolu has given a Mobile.
+His mobile has a special keypad with all alphabets in a same row. 
+Initially, Dolus finger is at index 0. 
+To type a character, he has to move his finger to the index of the desired character. 
+The time taken to move his finger from index i to index j is |i - j|.
+
+Your task is to calculate the time taken for typing the characters on the keypad
+
+The First line of input contains the alphabets(a-z) arranged in random order followed by the word to be typed.
+
+Input = abcdefghijklmnopqrstuvwxyz
+cba
+Output = 4
+Explanation: The index moves from 0 to 2 to write 'c' then to 1 to write 'b' then to 0 again to write 'a'.
+Total time = 2 + 1 + 1 = 4. 
+
+input = pqrstuvwxyzabcdefghijklmno 
+word = spt
+output = 10
+
+
+
+
+
+
+
+========================================================================================
+Shyam a third class student is a given and date
+His teacher asked him to find out the day of the date in the given year.
+Help Shyam to solve this problem 
+
+The Input Date Contains DD MM YYYY Format
+Assume the Input Date is valid date
+
+
+input = 31 12 2010
+output = 365
+
+input = 01 02 1995
+output = 32
+
+1st Feb is 32 Day in the year.
+
+Note - Dont Use Pre Defined Date and Time Class
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+========================================================================================
+In a shopping mall, there is a Lift with a capacity of 500kgs only.
+There are N persons waiting for the lift, and their weights (weights[]) are given.
+If The Lift is overloaded, it will not move.
+ 
+Your task is to find out the maximum number of persons can use the Lift,
+without any overloading issue.
+
+Input Format:
+-------------
+Line-1: An integer N, number of persons
+Line-2: N space separated integers, weights of the persons.
+
+Output Format:
+--------------
+Print an integer, max num of persons canuse the lift.
+
+Sample Input-1:
+---------------
+6
+98 121 76 135 142 65
+
+Sample Output-1:
+----------------
+5
+
+Sample Input-2:
+---------------
+7
+85 67 69 83 54 61 50
+
+Sample Output-2:
+----------------
+7
+
+
+
+
+import java.util.*;
+class Test{
+    public static int Maxpersons(int[] a){
+        int n=a.length;
+        int sum=0,count=0;
+        Arrays.sort(a);
+        for(int i=0;i<n;i++){
+            sum+=a[i];
+            count++;
+            if(sum>500){
+                count--;
+                break;
+            }
+        }
+        return count;
+    }
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] a=new int[n];
+        for(int i=0;i<n;i++){
+            a[i]=sc.nextInt();
+        }
+        System.out.print(Maxpersons(a));
+    }
+}
+========================================================================================
+MotorSport Ltd hosting a Racing Championship. Mr. Ajith is participating 
+in car races. Each race start and end in perticular time intervals.
+
+You are given an array of racing time intervals consisting of
+start and end times [[s1,e1],[s2,e2],...] (s < e ) of N races, in which 
+Ajith has to participate. Your task is to determine whether Ajith can 
+in all the races or not.
+
+NOTE: If a race starts at time 'a' ends at time 'b', 
+another race can start at 'b'.
+
+Input Format:
+-------------
+Line-1: An integer N, number of races Ajith has to participate.
+Next N lines: Two space separated integers, start and end time of each race.
+
+Output Format:
+--------------
+Print a boolean value.
+
+
+Sample Input-1:
+---------------
+3
+0 30
+5 10
+15 20
+
+Sample Output-1:
+----------------
+false
+
+Sample Input-2:
+---------------
+3
+0 10
+15 25
+30 35
+
+Sample Output-2:
+----------------
+true
+
+
+
+
+import java.util.*;
+public class Test{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int mat[][]=new int[n][2];
+        for(int i=0;i<n;i++){
+            mat[i][0]=sc.nextInt();
+            mat[i][1]=sc.nextInt();
+        }
+        Arrays.sort(mat,(a,b)->{
+            return a[0]-b[0];
+        });
+        for(int i=0;i<n-1;i++){
+            if(mat[i][1]>mat[i+1][0]){
+                System.out.println(false);
+                System.exit(0);
+            }
+        }
+        System.out.println(true);
+    }
+}
+========================================================================================
+You are reading an array called "numbers" with values.
+
+Find the first duplicate value in "numbers" and 
+print out the INDEX of that value as well as the INDEX of where it was first found in "numbers".
+
+If no duplicate value found print -1.
+
+Input Format:
+-------------
+Line 1: Size of array
+Line 2-n : N line-separated numbers.
+
+Output Format:
+--------------
+Line 1 : one space-separated numbers.
+
+Sample Input 1:
+---------------
+9
+10 20 15 30 15 20 35 60 10
+
+Sample Output 1:
+----------------
+4 2
+
+Explanation:
+------------
+4 is where the duplicate index was and 2 is where the first pair of that duplicate was, as an index.
+
+Sample Input 2:
+---------------
+5
+1 2 3 4 5
+
+Sample Output 2:
+----------------
+-1
+
+
+
+
+
+
+
+
+
+
+========================================================================================
+/*Given a string s, return true if the s can be palindrome after deleting at most one character from it.
+
+ input format:string
+outputformat :true or false
+
+Example 1:
+Input: aba
+Output: true
+
+Example 2:
+Input: abca
+Output: true
+Explanation: You could delete the character 'c'.
+
+Example 3:
+Input: abc
+Output: false
+ 
+Constraints:
+
+1 <= s.length <= 105
+s consists of lowercase English letters.
+*/
+import java.util.*;
+class Palindrome1{
+    public static boolean isPalindrome(StringBuilder s){
+        return s.toString().equals(s.reverse().toString());
+    }
+    
+    public static boolean isPalindrome1(String s){
+        int i=0;
+        int j=s.length()-1;
+        while(i<j){
+            StringBuilder str1=new StringBuilder(s).deleteCharAt(i);
+            StringBuilder str2=new StringBuilder(s).deleteCharAt(j);
+            if(isPalindrome(str1) || isPalindrome(str2)){
+             return true;
+            }
+             i++;
+             j++;
+        }
+        
+        return false;
+    }
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        System.out.println(isPalindrome(s));
+    }
+}
+========================================================================================
+/*
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, 
+typically using all the original letters exactly once.
+
+Example 1:
+Input:anagram
+nagaram
+Output: true
+
+Example 2:
+Input:rat
+car
+Output: false
+
+*/
+import java.util.*;
+class Anagram{
+    public static boolean isAnagram(String s,String t){
+        int len1=s.length();
+        int len2=s.length();
+        if(len1!=len2){
+            return false;
+        }
+        char arr[]=s.toCharArray();
+        char brr[]=t.toCharArray();
+        Arrays.sort(arr);
+        Arrays.sort(brr);
+        for(int i=0;i<len1;i++){
+            if(arr[i]!=brr[i]){
+                return false;
+            }
+        }
+        return true;
+        
+    }
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String str1=sc.nextLine();
+        String str2=sc.nextLine();
+        System.out.println(isAnagram(str1,str2));
+    }
+}
+========================================================================================
+/*
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+
+1.Open brackets must be closed by the same type of brackets.
+2.Open brackets must be closed in the correct order.
+3.Every close bracket has a corresponding open bracket of the same type.
+
+Example 1:
+Input: ()
+Output: true
+
+Example 2:
+
+Input: ()[]{}
+Output: true
+
+Example 3:
+Input:(]
+Output: false
+ 
+
+Constraints:
+
+1 <= s.length <= 104
+s consists of Parentheses only '()[]{}'.
+*/
+import java.util.*;
+class ValidParentheses{
+    public static boolean isValid(String s){
+        StringBuilder str=new StringBuilder(s);
+        int len=str.length();
+        int i=0;
+        if(len%2==1){
+            return false;
+        }
+        while(i<len){
+            if(str.charAt(i)==']'||str.charAt(i)=='}'||str.charAt(i)==')'&&i!=0){
+                if(str.charAt(i-1)=='[' && str.charAt(i)==']' ||
+                    str.charAt(i-1)=='{' && str.charAt(i)=='}' ||
+                    str.charAt(i-1)=='('&& str.charAt(i)==')')
+                    {
+                        str.delete(i-1,i+1);
+                        len=len-2;
+                        i=i-2;
+                    }
+            }
+            i++;
+            return true;
+        }
+        return false;
+    }
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+        System.out.println(isValid(str));
+    }
+}
+========================================================================================
+In a team of N players, each player's jersey has a number printed on it.
+Jersey numbers may be repeated.
+
+You will be given the list of jersey numbers of N players. 
+You need to find out number of pairs, wearing same jersey number.
+i.e, pair[i]=[p1, p2], p1 and p2 are the index positions
+jersey number of Player-p1 and Player-p2 should be same.  
+
+If no such pair found, print "0".
+
+Input Format:
+-------------
+Line-1: An integer N, number of players.
+Line-2: N space separated integers, Jersey numbers of players.
+
+Output Format:
+--------------
+Print an integer, number of pairs wearing same jersey number.
+
+
+Sample Input-1:
+---------------
+6
+1 2 3 1 1 3
+
+Sample Output-1:
+----------------
+4
+
+Explanation: 
+------------
+There are 4 pairs (0,3), (0,4), (3,4), (2,5) wearing same jersey numbers, 
+0-indexed list.
+
+Sample Input-2:
+---------------
+3
+1 2 3
+
+Sample Output-2:
+----------------
+0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===============================================================================================
+You are provided with an integer array represented by color codes. 
+The distinctive color codes in the array are those that appear exactly once.
+
+Determine and return the sum of all the distinct color codes in the given array.
+
+Input Format:
+-------------
+Line 1: Space seperated list of numbers
+
+
+Output Format:
+--------------
+Line 1: A number, sum of all the distict color codes
+
+
+Sample Input1:
+--------------
+1 2 3 2
+
+Sample Output1:
+--------------
+4
+
+Explanation:
+------------
+The unique elements are [1,3], and the sum is 4.
+
+Sample Input2:
+--------------
+1 1 1 1 1
+
+Sample Output2:
+--------------
+0
+
+Explanation:
+------------
+There are no unique elements, and the sum is 0.
+
+Sample Input3:
+--------------
+1 2 3 4 5
+
+Sample Output3:
+--------------
+15
+
+Explanation:
+------------
+The unique elements are [1,2,3,4,5], and the sum is 15.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===================================================================================================================
+/*
+The school management has planned few games for students to improve their 
+mathematical skills,one such game is group of students are placed in a row, 
+first student holds a number 0, second student holds a number 1, and 
+the task is remaining students have to hold the number which is equal to 
+the addition of previous two student's numbers. With your programming skills 
+can you print the numbers to be hold by students for a given group contains 
+n students. 
+
+Example 1:
+input:3
+Output: 0 1 1
+
+Example 2:
+Input:7
+Output: 0 1 1 2 3 5 8
+
+*/
+import java.util.*;
+class Game{
+    public static int fabbi(int num){
+        if(num==0){
+           return 0;
+        }
+        if(num==1){
+           return 1;
+        }
+        else{
+        return fabbi(num-1)+fabbi(num-2);
+        }
+    }
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int num=sc.nextInt();
+        for(int i=0;i<num;i++){
+            System.out.print(fabbi(i)+" ");
+        }
+    }
+}
+========================================================================================
+/*  
+In a primary school mathematics teacher has given a task to students, i.e multiply all the integers between 1 to n and give the final product.With a pen and paper, this process has taken much more time,and you are thier computer teacher can you help students by giving a program to solve this task.
+
+input format = integer
+output format = integer
+    
+	Example 1:
+	input=5
+	output=120
+
+	Example 2:
+	input=6
+	output=720
+	
+	Example 3:
+	input=8
+	output=40320
+*/
+import java.util.*;
+class Product{
+    public static int factorial(int n){
+        if(n==0){
+            return 1;
+        }
+        return (n*factorial(n-1));
+    }
+    
+    
+    
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int num=sc.nextInt();
+        System.out.println(factorial(num));
+    }
+}
+========================================================================================
+/*
+you are solving a puzzle, which is to find product of two integers without 
+using multiplication operator and without using any loops.
+Using your programming skills can you solve this with a java program.
+
+Example1 :
+input =4 5
+output=20
+
+Example 2:
+input=6 15
+output=90
+*/
+import java.util.*;
+class ProductOfTwo{
+    public static int product(int n1,int n2){
+        if(n1<n2){
+            return product(n2,n1);
+        }
+        else if(n2!=0){
+            return (n1+product(n1,n2-1));
+        }
+        else{
+            return 0;
+        }
+    }
+    
+    
+    
+    
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n1=sc.nextInt();
+        int n2=sc.nextInt();
+        System.out.println(product(n1,n2));
+    }
+}
+========================================================================================
+/*You are attending an interview interviewer asked you to print 1 to n numbers 
+without using loops when given an integer N.
+input format : an integer n
+
+Examples:
+
+Input: N = 5
+Output: 1 2 3 4 5
+Explanation: We have to print numbers from 1 to 5.
+
+Input: N = 10
+Output: 1 2 3 4 5 6 7 8 9 10
+Explanation: We have to print numbers from 1 to 10.
+*/
+import java.util.*;
+class PrintNumbers{
+    public static int printNum(int num){
+       if(num>0){
+           printNum(num-1);
+           System.out.print(num+" ");
+       }
+       return num;
+    }
+    
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int num=sc.nextInt();
+        printNum(num);
+    }
+}
+========================================================================================
+/*
+you are writing an exam, the question is to test a given string is palindrome or not, but the constraints are,  should not use builtin functions like reverse and any loops. 
+
+Example 1:
+input=abcdedcba
+output=true
+
+Example 2:
+input=abcdefdcba
+output=false
+*/
+
+
+
+
+
+
+
+
+
+
+========================================================================================
+/*
+The central government, during census preparation, wants to provide a summary of the population's ages. They have collected age data in groups and provided average ages for each group(like children,young age,middle age,old age groups). However, this task is quite tedious, so the government has assigned your company to write a program to automate the process,can you write that program. In this context, all ages are integers.
+Examples: 
+Input :5
+5 6 7 8 9
+Output :7.0
+
+Input : 6
+18 20 23 24 28 29
+Output : 23.666666
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+========================================================================================
+Given two arrays Aand B, B is an anagram of A. B is an anagram of A means B is made by randomizing the order of the elements in A.
+
+We want to find an index mapping P, from A to B. 
+A mapping P[i] = j means the ith element in A appears in B at index j.
+Note:  The lists A and B doesn't contain duplicates. 
+       A, B have equal lengths in range [1, 100].
+       If the array doesnt contains the elements print -1 in the place of index 
+
+input = 5
+12 28 46 32 50
+50 12 32 46 28
+output =
+1 4 3 2 0
+ 
+Explanation
+as res[0] = 1 because the 0th element of A appears at B[1], 
+and res[1] = 4 because the 1st element of A appears at B[4], 
+and so on.
+
+
+input = 5
+12 28 46 32 50
+50 12 32 406 28
+output =
+1 4 -1 2 0
+
+
+
+
+
+import java.util.*;
+class Test {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int size = sc.nextInt();
+        int arr1[] = new int[size];
+        int arr2[]= new int[size];
+        for (int i = 0; i < size; i++) {
+            arr1[i] = sc.nextInt();
+        }
+        for (int i = 0; i < size; i++) {
+            arr2[i]= sc.nextInt();
+        }
+        int result[] = anagramMapping(arr1,arr2);
+
+        System.out.print("Output: ");
+        for (int i : result) {
+            System.out.print(i + " ");
+        }
+        sc.close();
+    }
+
+    public static int[] anagramMapping(int arr1[], int arr2[]) {
+        HashMap<Integer, Integer> indexMap = new HashMap<>();
+        for (int i = 0; i < arr2.length; i++) {
+            indexMap.put(arr2[i], i);
+        }
+
+        int[] result = new int[arr1.length];
+
+        for (int i = 0; i <arr1.length; i++) {
+            result[i] = indexMap.getOrDefault(arr1[i], -1);
+        }
+        return result;
+    }
+}
+========================================================================================
+You are given a 0-indexed integer array nums.
+
+In one operation, you may do the following:
+1) Choose two integers in nums that are equal.
+2) Remove both integers from nums, forming a pair.
+3) The operation is done on nums as many times as possible.
+
+Return a 0-indexed integer array answer of size 2 where answer[0] is the number 
+of pairs that are formed and answer[1] is the number of leftover integers 
+in nums after doing the operation as many times as possible.
+ 
+
+Example 1:
+
+Input: nums = 
+7
+1 3 2 1 3 2 2
+output =3 1
+
+Explanation:
+Form a pair with nums[0] and nums[3] and remove them from nums. Now, nums = [3,2,3,2,2]
+Form a pair with nums[0] and nums[2] and remove them from nums. Now, nums = [2,2,2]
+Form a pair with nums[0] and nums[1] and remove them from nums. Now, nums = [2]
+No more pairs can be formed. 
+A total of 3 pairs have been formed, and there is 1 number leftover in nums.
+
+
+input =2
+1 1 
+output =1 0
+Explanation: Form a pair with nums[0] and nums[1] and remove them from nums. Now, nums = [].
+No more pairs can be formed. A total of 1 pair has been formed, and there are 0 numbers leftover in nums.
+
+input =1
+0
+output =0 1
+Explanation: No pairs can be formed, and there is 1 number leftover in nums.
+
+
+
+========================================================================================
+Given a matrix where every row is sorted in increasing order.
+Write a function that finds and returns a common element in all rows.
+If there is no common element, then returns -1.
+
+Example: 
+input =4 5
+1 2 3 4 5
+2 4 5 8 10
+3 5 7 9 11
+1 3 5 7 9
+output =5
+
+input =3 3
+1 2 3
+4 5 6
+7 8 9
+output =-1
+
+
+
+
+========================================================================================
+
+You have a set of integers s, 
+which originally contains all the numbers from 1 to n. 
+Unfortunately, due to some error, one of the numbers in s got duplicated to another number in the set, 
+which results in repetition of one number and loss of another number.
+
+You are given an integer array nums representing the data status of this set 
+after the error.
+
+Find the number that occurs twice and the number that is missing.
+
+Input Format:
+-------------
+Line-1: An integer, n, size of array
+Line-2: Space separated integers.   
+
+Output Format:
+--------------
+Line-1: Space separated numbers, duplicate and missing number
+
+Sample Input-1:
+---------------
+4
+1 2 2 4
+
+Sample Output-1:
+---------------
+2 3
+
+Sample Input-2:
+---------------
+2
+1 1
+
+Sample Output-2:
+---------------
+1 2
+
+
+========================================================================================
+Mr Ravi is a business man, he does business weekly Q times, 
+and records his PROFIT or LOSS every time in to data[][] array. 
+He records the LOSS as a negative value and PROFIT as a positive value.
+
+Your task is to help Mr Ravi to know that how many total number of times,
+he was in LOSS after P weeks.
+
+NOTE: The values in data[][] are in descending order both row-wise and 
+column-wise as given in sample testcases.
+
+Input Format:
+-------------
+Line-1: Two space separated integers, P and Q
+Next P lines: Q space separated integers, data[][].   
+
+Output Format:
+--------------
+Print an integer result.
+
+
+Sample Input-1:
+---------------
+4 4
+5 4 2 -2
+4 3 1 -2
+2 2 -1 -3
+-1 -1 -2 -4
+
+Sample Output-1: 
+----------------
+8
+
+Explanation: 
+------------
+8 days in LOSS,since there are 8 negative values.
+
+Sample Input-2:
+---------------
+4 4
+8 7 1 -2
+7 6 2 -3
+3 -1 -2 -4
+-2 -3 -4 -7
+	 
+Sample Output-2:
+----------------
+9
+
+Explanation:
+------------
+9 days in LOSS,since there are 8 negative values.
+
+Sample Input-3:
+---------------
+2 2
+9 3
+5 0
+
+Sample Output-3:
+----------------
+0
+========================================================================================
+Given a sorted list of integers, 
+
+Your task is to find the continuous range of numbers, make them as groups
+and print all the groups as show in the sample testcases.
+
+For example:
+Given list is [ 1, 2, 3 ]: 1, 2, 3 is continuous range, grouped as 1->3
+Given list is [ 1, 2, 4, 5, 7 ]: 1, 2 is continuous range, grouped as 1->2, 
+4,5 grouped as 4->5, 7 is left alone.
+
+Note: List contain no duplicates.
+
+Input Format:
+-------------
+Line-1 -> Space separated integers in sorted order
+
+Output Format:
+--------------
+Print the list of continuous range groups.
+
+
+Sample Input-1:
+---------------
+5
+1 2 4 5 7
+
+Sample Output-1:
+----------------
+[1->2, 4->5, 7]
+
+Explanation: 
+------------
+1,2 form a continuous range; 4,5 form a continuous range.
+
+
+Sample Input-2:
+---------------
+9
+1 2 3 5 6 7 9 10 12
+
+Sample Output-2:
+----------------
+[1->3, 5->7, 9->10, 12]
+
+Explanation: 
+------------
+1,2,3 form a continuous range 
+5,6,7 form a continuous range
+9,10 form a continuous range
+========================================================================================
+/*
+Given a string s, return the number of segments in the string.
+
+A segment is defined to be a contiguous sequence of non-space characters.
+
+Example 1:
+Input:Hello, my name is John
+Output: 5
+Explanation: The five segments are ["Hello,", "my", "name", "is", "John"]
+
+Example 2:
+Input: s =Hello
+Output: 1
+
+*/
+
+
+
+
+========================================================================================
+BINARY SEARCH
+/*
+Given a m x n matrix grid which is sorted in non-increasing order 
+both row-wise and column-wise, return the number of negative numbers in grid.
+ 
+Example 1:
+Input: 4 4
+4 3 2 -1 
+3 2 1 -1
+1 1 -1 -2
+-1 -1 -2 -3
+Output: 8
+Explanation: There are 8 negatives number in the matrix.
+
+Example 2:
+Input: 2 2
+3 2 
+1 0
+Output: 0
+
+*/
+import java.util.*;
+class CountNegative 
+{
+    public static int bs(int arr[])
+	{
+	    int count;
+        int low=0;
+        int high=arr.length-1;
+        while(low<=high){
+            int mid=(low+high)/2;
+            if(arr[mid]>=0){
+                low=mid+1;
+            }
+            else{
+                high=mid-1;
+            }
+            
+        }
+        return arr.length-low;
+        
+    }
+
+    public int countNegatives(int[][] grid) {
+        int count=0;
+        for(int arr[]:grid){
+            count=count+bs(arr);
+        }
+        return count;
+        
+    }
+
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		int m = sc.nextInt();
+        int n = sc.nextInt();
+        int[][] arr = new int[m][n];
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                arr[i][j] = sc.nextInt();
+		System.out.println(new CountNegative().countNegatives(arr));
+
+	}
+}
+
+
+
+========================================================================================
+/*Mr. Ram is working in a manufacturing industry where items with different weights are manufactured.
+His duty is to pick pairs of items whose weight difference is equal to 'k'. 
+Can you help him with a program? The condition is not to use extra space.
+
+input format:an integer number n
+			 n number of positive integers
+			 an integer number k
+output format : pairs of integers
+
+Example 1:
+input = 8
+1 2 3 4 5 6 7 8
+3
+output =
+1 4
+2 5
+3 6
+4 7
+5 8
+Example 2:
+input = 10
+5 10 15 20 25 30 35 40 45 50
+5
+output =5 10
+10 15
+15 20
+20 25
+25 30
+30 35
+35 40
+40 45
+45 50
+
+*/
+import java.util.*;
+public class FindPairsWithDifference 
+{
+
+
+	private static void findPairsWithDifference(int[] array, int k) 
+	{
+        
+    }
+    private static int binarySearch(int[] array, int low, int high, int target) 
+	{
+        int low=0;
+        int high=array.length-1;
+        while(low<=high){
+            int mid=(low+high)/2;
+            if(array[mid]-k==0){
+                low=mid+1;
+            }
+            else{
+                high=mid-1;
+            }
+        }
+        return array.length-low;
+        
+    }
+
+	public static void main(String[] args) 
+	{
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		int[] array = new int[n];
+		for(int i=0;i<n;i++)
+			array[i]=sc.nextInt();
+        int k = sc.nextInt();
+        Arrays.sort(array);
+        System.out.println(findPairsWithDifference(array, k));
+    }
+}
+
+========================================================================================
+/*Mason work is going on at your home, and presently mason is building staircase. 
+The stair case consists of k rows, where the ith row has exactly i bricks.
+The last row of the staircase may be incomplete.
+
+You have n bricks and can you give the number of complete rows of the staircase mason will build.
+
+Solve this problem in  O(logn) time complexity.
+
+input format : an integer number
+outpu format : an integer numebr
+
+Example 1:
+input= 5
+output =2
+Explanation :(Here B stands for brick)
+B1
+B2 B3
+B4 B5
+first row constructed with 1 brick row =1 no.of bricks =1
+second row constructed with 2 bricks row=2 no.of bricks = 2
+third row constructed with 2 bricks  row =3 no.of bricks =2 (incomplete row)
+as third row is incomplete we are returing 2 as answer.
+
+Example :2
+input =10
+output =4
+Explanation:
+B1
+B2 B3
+B4 B5 B6
+B7 B8 B9 B10
+all rows are completed so return 4
+
+Example :3
+input = 19
+output =5
+*/
+
+import java.util.*;
+
+class StairCase 
+{
+    public int arrangeBricks(int nbricks) 
+	{
+	    //Write Code here	
+    }
+
+	public static void main(String[] args)
+	{
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		System.out.println(new StairCase().arrangeBricks(n));
+	}
+}
+
+
+========================================================================================
+
+Given an array of distinct integers arr, where arr is sorted in ascending order, 
+return the smallest index i that satisfies arr[i] == i. If there is no such index,
+return -1.
+
+input =5
+-10 -5 0 3 7
+output =3
+Explanation: For the given array, arr[0] = -10, arr[1] = -5, arr[2] = 0, arr[3] = 3, thus the output is 3.
+
+input =5
+0 2 5 8 17
+output =0
+Explanation: arr[0] = 0, thus the output is 0.
+
+input =6
+-10 -5 3 4 7 9
+output = -1
+Explanation: There is no such i that arr[i] == i, thus the output is -1.
+   
+
+
+import java.util.Scanner;
+
+public class SmallestIndex {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the size of the array: ");
+        int size = scanner.nextInt();
+
+        int[] arr = new int[size];
+        System.out.println("Enter the elements of the array in ascending order:");
+        for (int i = 0; i < size; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+        int result = findSmallestIndex(arr);
+        System.out.println("Output: " + result);
+    }
+
+    public static int findSmallestIndex(int[] arr) {
+        int left = 0;
+        int right = arr.length - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (arr[mid] == mid) {
+                return mid;
+            } else if (arr[mid] < mid) {
+                // If arr[mid] < mid, search in the right half
+                left = mid + 1;
+            } else {
+                // If arr[mid] > mid, search in the left half
+                right = mid - 1;
+            }
+        }
+
+        // If no such index is found
+        return -1;
+    }
+}
+========================================================================================
+You are given a string s consisting of lowercase English letters. A duplicate removal consists of choosing two adjacent and equal letters and removing them.
+
+We repeatedly make duplicate removals on s until we no longer can.
+
+Return the final string after all such duplicate removals have been made. It can be proven that the answer is unique.
+
+ 
+
+Example 1:
+
+Input: s = "abbaca"
+Output: "ca"
+Explanation: 
+For example, in "abbaca" we could remove "bb" since the letters are adjacent and equal, and this is the only possible move.  The result of this move is that the string is "aaca", of which only "aa" is possible, so the final string is "ca".
+Example 2:
+
+Input: s = "azxxzy"
+Output: "ay"
+
+
+input =acaaabbbacdddd
+output =acabac
+
+input =abbbaca
+output =abaca
+
+
+
+
+import java.util.*;
+class Test {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        StringBuilder sb = new StringBuilder();
+        String str = sc.nextLine();
+        sb.append(removeDuplicates(str));
+        System.out.println("Result: " + sb.toString());
+    }
+    public static String removeDuplicates(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (!stack.isEmpty() && stack.peek() == c) {
+                stack.pop(); 
+            } else {
+                stack.push(c);
+            }
+        }
+        StringBuilder result = new StringBuilder();
+        while (!stack.isEmpty()) {
+            result.insert(0, stack.pop()); 
+        }
+        return result.toString();
+    }
+}
+========================================================================================
+Vihan is given a number N and He wants to check whether N is a converse number
+or not. The binary form of number N is said to be converse number, if it obeys 
+the following property: "every pair of adjacent digits are different". 
+
+Your task is to help Vihan to find N is a converse number or not.
+If yes, print 'true', otherwise print 'false'.
+
+Input Format:
+-------------
+An integer N, the positive number.
+
+Output Format:
+--------------
+Print a boolean result.
+
+Sample Input-1:
+---------------
+85
+
+Sample Output-1:
+----------------
+true
+
+Explanation:
+------------
+Binary Rep of 85 is 1010101 
+
+
+Sample Input-2:
+---------------
+87
+
+Sample Output-2:
+----------------
+false
+
+Explanation:
+------------
+Binary Rep of 87 is 1010111
+
+
+
+
+
+import java.util.*;
+class Test {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        String binaryNumber = Integer.toBinaryString(num);
+        boolean isConverseNumber = isConverse(binaryNumber);
+        System.out.println(isConverseNumber);
+    }
+
+    public static boolean isConverse(String binaryNumber) {
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < binaryNumber.length() - 1; i++) {
+            char currentDigit = binaryNumber.charAt(i);
+            char nextDigit = binaryNumber.charAt(i + 1);
+
+            if (currentDigit == nextDigit) {
+                return false; 
+            }
+        }
+
+        return true; 
+    }
+}
+========================================================================================
+
+Ramu has been given two different sets of students marks.
+His teacher has been surprised to see that few of these marks of two sets seems to be similar.
+If they are equal the teacher gives Grade 'Equal' to both the sets
+If they are not equal the teacher gives Grade 'Not Equal' to both the sets
+
+Input 
+The first line of input contains the size of set1 followed by set1 elements followed by set2 size followed by set2 elements
+
+Input = 
+5
+1 2 3 4 5
+5
+4 3 2 1 5
+Output = Equal
+
+Input =
+6
+1 2 3 2 1 4
+6
+1 2 3 2 4 4
+Output = Not Equal
+
+Help Ramu to fix the problem. 
+
+
+
+
+
+size_set1 = int(input())
+set1 = list(map(int, input().split()))
+size_set2 = int(input())
+set2 = list(map(int, input().split()))
+if set1 == set2:
+    print("Equal")
+else:
+    print("Not Equal")
+========================================================================================
+In a Militarty Organization, the Army chief wants to write the names of the soldiers in the reverse order and 
+check the names(reversed) with the orginal names.
+
+Help the chief to check how many such names are equal. 
+Print the names which are equal. 
+If they are not equal print -1
+
+
+Note - Use Recursion Only
+
+input = thomas hah abcddcba
+output = hah abcddcba
+
+input = a b c d
+output = a b c d
+
+input = shiva gopi hari
+output = -1
+
+
+
+import java.util.*;
+class Test {
+    public static boolean isPalindrome(String str, int low, int high) {
+        if (low >= high)
+            return true;
+        if (str.charAt(low) != str.charAt(high))
+            return false;
+
+        return isPalindrome(str, low + 1, high - 1);
+    }
+
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        String name = sc.nextLine(); 
+        String names[] = name.split(" ");
+        boolean flag = false;
+
+        for (String str : names) {
+            if (isPalindrome(str, 0, str.length() - 1)) {
+                System.out.print(str + " ");
+                flag = true;
+            }
+        }
+
+        if (!flag)
+            System.out.print(-1);
+    }
+}
+========================================================================================
+Steve Jobs is working on Numbers.
+
+He has found few numbers behvae in a different way.
+If a number is divisible by the sum of its individual digits then he wants to name that number has H Number
+
+
+Example: Number 200 is a H Number because the sum of digits 2 and 0 and 0 is 2(2+0+0) and 200 is divisible by 2. 
+Number 171 is a Harshad Number because the sum of digits 1 and 7 and 1 is 9(1+7+1) and 171 is divisible by 9.
+
+Help Jobs to say if a given number is H number or not. If H number print Yes else print No
+
+Sample 1:
+input=200
+output=Yes
+
+Sample 2:
+input=101
+output=No
+
+Sample 3:
+input=-12
+output=-1
+
+Note : if a given number is negative print -1.
+
+
+
+
+def is_harshad_number(number):
+    if number < 0:
+        return -1
+    digits = [int(digit) for digit in str(number)]
+    digit_sum = sum(digits)
+    if digit_sum != 0 and number % digit_sum == 0:
+        return "Yes"
+    else:
+        return "No"
+input_number = int(input("Enter a number: "))
+result = is_harshad_number(input_number)
+print(result)
+=================================================================================================
+SHyam is working on String S, he was asked to develop a method to return the longest substring in S, which is a palindrome.
+
+NOTE: Alphabets are case sensitive
+THe lenght of the palindrome should be atleast 2 characters.
+If no palindrome substring print -1.
+
+
+input = abbbabbcbbacdb
+output = abbcbba
+
+input = aaaaa
+output = aaaaa
+
+
+
+import java.util.*;
+class Test {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = sc.nextLine();
+        String result = findLongestPalindrome(input);
+        System.out.println(result);
+    }
+    static String findLongestPalindrome(String s) {
+        if (s == null || s.length() < 2) {
+            return "-1";
+        }
+        int start = 0;
+        int end = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int len1 = expandAroundCenter(s, i, i);
+            int len2 = expandAroundCenter(s, i, i + 1);
+            int len = Math.max(len1, len2);
+            if (len > end - start) {
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
+            }
+        }
+        if (end - start < 1) {
+            return "-1";
+        }
+        return s.substring(start, end + 1);
+    }
+    static int expandAroundCenter(String s, int left, int right) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
+        }
+        return right - left - 1;
+    }
+}
+====================================================================================================
+Shiva is given an matrix. 
+
+He has to find the  element of the matrix such that it is the smallest element in its row and greatest in its column.
+
+The first line of input contains the size of the matrix followed by matrix elements
+
+Input = 3 3
+3 7 8
+9 11 13 
+15 16 17
+Output = 15
+
+Explanation: 15 is the since it is the smallest in its row and the greatest in its column
+
+Note - Print -1 if no such element exists
+
+
+
+
+
+
+
+======================================================================================================
+
+//sum of array elements using recursion
+import java.util.*;
+class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        System.out.println("sum : "+sum(arr,n));
+    }
+    public static int sum(int arr[],int n){
+        if(n==0){
+            return 0;
+        }
+        else{
+            return arr[n-1]+sum(arr,n-1);
+        }
+    }
+}
+
+
+
+
+
+
+//reverse of a string using recursion
+import java.util.*;
+class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+        System.out.println("string reverse "+stringReverse(str));
+    }
+    public static String stringReverse(String str){
+        if(str.isEmpty()){
+            return str;
+        }
+        else{
+            return stringReverse(str.substring(1))+str.charAt(0);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+//fibonacci series using recursion
+import java.util.*;
+class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter a term for the fibonacci series: ");
+        int num=sc.nextInt();
+        if(num<0){
+            System.out.print("Enter a non-negative integer: ");
+        }
+        else{
+            System.out.println("fibonacci series ");
+            for(int i=0;i<num;i++){
+                System.out.print(fibonacci(i)+" ");
+            }
+        }
+    }
+    public static int fibonacci(int num){
+        if(num==0){
+            return 0;
+        }
+        else if(num==1){
+            return 1;
+        }
+        else{
+            return fibonacci(num-1)+fibonacci(num-2);
+        }
+    }
+}
+
+
+
+
+
+
+//factorial using recursion
+import java.util.*;
+class Main{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter a non-negative number: ");
+        int n=sc.nextInt();
+        if(n<0){
+            System.out.print("please enter a non-negative integer: ");
+        }
+        else{
+            System.out.print("factorial of "+n+" is "+calFactorial(n));
+        }
+    }
+    public static int calFactorial(int n){
+        if(n==0||n==1){
+            return 1;
+        }
+        else{
+            return n*calFactorial(n-1);
+        }
+    }
+}
+
+========================================================================================
+//sum of the numbers using recursion
+import java.util.*;
+class Main{
+    public int sum(int n){
+        if(n==0){
+            return 0;
+        }
+        else{
+            return n+sum(n-1);
+        }
+    }
+    
+    
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        System.out.println(new Main().sum(n));
+    }
+}
+
+
+
+
+//power using recursion
+import java.util.*;
+class Main{
+    public int power(int x,int n){
+        if(n==0){
+            return 1;
+        }
+        else{
+            return x*power(x,n-1);
+        }
+    }
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int x=sc.nextInt();
+        int n=sc.nextInt();
+        System.out.println(new Main().power(x,n));
+    }
+}
+
+
+========================================================================================
+/*In an examination seating arrangment there are x1,x2,x3....xn and y1,y2,y3,...yn. arrange the students int the form that x1,y1,x2,y2,x3,y3.....xn,yn.
+input:3
+2 3 4 6 8 5
+output:
+2 6 3 8 4 5
+
+
+input:4
+2 6 4 8 7 9 1 3
+output:
+2 7 6 9 4 1 8 3
+
+input:3
+1 2 3 4 5 6
+output:
+1 4 2 5 3 6
+
+write a java code using scanner 
+*/
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of students: ");
+        int n = scanner.nextInt();
+        int[] xArray = new int[n];
+        int[] yArray = new int[n];
+        for (int i = 0; i < n; i++) {
+            xArray[i] = scanner.nextInt();
+        }
+        for (int i = 0; i < n; i++) {
+            yArray[i] = scanner.nextInt();
+        }
+        int[] result = new int[2 * n];
+        int index = 0;
+        for (int i = 0; i < n; i++) {
+            result[index++] = xArray[i];
+            result[index++] = yArray[i];
+        }
+        System.out.print("Output: ");
+        for (int num : result) {
+            System.out.print(num + " ");
+        }
+    }
+}
+
+
+
+
+
+import java.util.*;
+public class Main{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of students: ");
+        int n = scanner.nextInt();
+        int[] xArray = new int[n];
+        int[] yArray = new int[n];
+        for (int i = 0; i < n; i++) {
+            xArray[i] = scanner.nextInt();
+        }
+        for (int i = 0; i < n; i++) {
+            yArray[i] = scanner.nextInt();
+        }
+        System.out.print("Output: ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(xArray[i] + " " + yArray[i] + " ");
+        }
+    }
+}
+
+========================================================================================
+
+
+Ram and Sita are subscribing to a travel service for their respective 
+business commitments in Rome.
+
+You are provided with four subscription strings, startOfRam, 
+endOfRam, startOfSita, and endOfSita. 
+Ram's subscription allows him to be in the city from the dates 
+startOfRam to endOfRam(inclusive), while Sita's subscription
+covers the period from startOfSita to endOfSita (inclusive). 
+
+Each subscription date is represented as a 5-character string in 
+the format "MM-DD", indicating the month and day of the date.
+
+Your task is to determine the total number of days when 
+they can enjoy their Rome experience together.
+
+Assume that all subscription dates fall within the same calendar year, 
+which is not a leap year. Note that the number of days per month 
+can be represented as: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31].
+
+Input Format:
+-------------
+4 space separated strings, startOfRam, endOfRam, startOfSita, and endOfSita. 
+
+Output Format:
+-------------
+An integer result.
+
+
+Sample Input-1:
+----------------
+08-15 08-18 08-16 08-19
+
+Sample Output-1:
+----------------
+3
+
+Explanation: 
+------------
+Ram will be in Rome from August 15 to August 18. 
+Sita will be in Rome from August 16 to August 19. 
+They both in Rome together on August 16th, 17th, and 18th, 
+so the answer is 3.
+
+
+Sample Input-2:
+----------------
+10-01 10-31 11-01 12-31
+
+Sample Output-2:
+----------------
+0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+====================================================================================
+In Network Security, Before you sent a message you convert it into cipher text.
+And then convert it into plain text using the given code. 
+
+You are given the cipher text CT, and the code C.
+The rules to get the plain text are as follows:
+- Find the leftmost occurrence of the code C in cipher text CT,
+- And then remove that occurrence of C from CT.
+- Repeat the above steps till you can't find the occurrence of C in CT.
+- Finally, the left over CT is the required plain text.
+
+Your task is to find out the plain text PT from the cipher text T,using the code C.
+ 
+Input Format:
+-------------
+Two space separated strings, CT and C.
+
+Output Format:
+--------------
+Print a string result, the plain text.
+
+
+Sample Input-1:
+---------------
+kmmitmititemitshmmititav mit
+
+Sample Output-1:
+----------------
+keshav
+
+Explanation: 
+-------------
+The following operations are done:
+- CT="kmmitmititemitshmmititav", C="mit", 
+remove the occurence at index 2.
+- CT="kmmititemitshmmititav", C="mit", 
+remove the occurence at index 2.
+- CT="kmitemitshmmititav", C="mit", 
+remove the occurence at index 1.
+- CT="kemitshmmititav", C="mit", 
+remove the occurence at index 2.
+- CT="keshmmititav", C="mit", 
+remove the occurence at index 5.
+- CT="keshmitav", C="mit", 
+remove the occurence at index 4.
+- CT="keshav", C="mit", 
+You can't remove further, So PT = "keshav"
+
+Sample Input-2:
+---------------
+aababccbc abc
+
+Sample Output-2:
+----------------
+"" 		//empty string
+
+Explanation: 
+-------------
+The following operations are done:
+- CT="aababccbc", C="abc", 
+remove the occurence at index 3.
+- CT="aabcbc", C="abc", 
+remove the occurence at index 1.
+- CT="abc", C="abc", 
+remove the occurence at index 0.
+- CT="", C="abc",
+You can't remove further, So PT = ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+========================================================================================
+For a Movie Premiere in US, advance booking is opened,
+At Quad Cinema theater, each ticket costs $25.
+And issue only one ticket per head. 
+
+People are standing in a queue to buy from Quad Cinema counter, 
+and order one at a time. And they are paying with either a $25, $50, or $100 notes.
+
+You will be given, an array of notes[], the people are carrying with them.
+Your task is to issue ticket and settle the balance to each person, 
+If a person given a $50 note, Issue the ticket worth $25 and settle the balance $25.
+
+Print true, if and only if you can provide tickets and settle the balance 
+for all the people in the queue. Otherwise, false.
+
+Note: Initially you don't have any amount in hand.
+
+Input Format:
+-------------
+Line-1: An integer N, number of persons
+Line-2: N space separated integers, notes with the persons.
+
+Output Format:
+--------------
+Print a boolean value.
+
+
+Sample Input-1:
+---------------
+5
+25 25 25 50 100
+
+Sample Output-1:
+----------------
+true
+
+Explanation:
+-----------
+- From the first three persons in queue, we take three $25 notes.
+- For the fourth person in queue, we take a $50 note and give back a $25 note.
+- For the last person, we take a $100 note and give back a $50 note and a $25 note.
+- Since every person in the queue received the ticket and balance, the answer is true.
+
+Sample Input-2:
+---------------
+5
+25 25 50 50 100
+
+Sample Output-2:
+----------------
+false
+
+Explanation:
+-----------
+- From the first two persons in queue, we take two $25 notes.
+- For the next two persons in queue, we take a $50 note and give back a $25 note.
+- For the last customer, we take $100, but can't give balance of $75 back 
+  because we only have two $50 notes.
+- Since not every person in the queue received the ticket and balance, the answer is false.
+
+
+
+
+
+import java.util.*;
+class Test{
+    public boolean ticket(int arr[],int size){
+        int count25=0;
+        int count50=0;
+        for(int i=0;i<size;i++){
+            int note=arr[i];
+            if (note == 25) {
+                count25++;
+            } else if (note == 50) {
+                count25--;
+                count50++;
+            } else if (note == 100) {
+                if (count50 > 0) {
+                    count50--;
+                    count25--;
+                } else {
+                    count25 -= 3;
+                }
+            }
+            if (count25 < 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int size=sc.nextInt();
+        int arr[]=new int[size];
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+        System.out.println(new Test().ticket(arr,size));
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+=================================================================================================
+Every kid enjoys getting out of the classroom and exploring, and 
+school excursions are one of the finest ways to do so. 
+
+ABC School organised a field trip for its students. Students are requested 
+to form a line, and their heights are supplied to you. You need to make 
+the students to stand in ascending order of their heights. 
+
+Your task is to find out, the minimum number of students who must change 
+their positions in order to make every student to stand in ascending order.
+
+Note: When a student is selected, the student can change position in a 
+possible way among all of them, and 
+the other students remain in their positions.
+
+Input Format:
+-------------
+Line-1: An integer N, number of the students.
+Line-2: N space separated integers, heights of the students.
+
+Output Format:
+--------------
+Print an integer, minimum number of moves.
+
+
+Sample Input-1:
+---------------
+6
+1 1 4 2 1 3
+
+Sample Output-1:
+----------------
+3
+
+Explanation:
+------------
+Initially Heights are as follows : [1,1,4,2,1,3] 
+Targeted Heights are as follows : [1,1,1,2,3,4] 
+On index 2: you have 4 vs 1 so you have to change the position of student. 
+On index 4: you have 1 vs 3 so you have to change the position of student. 
+On index 5: you have 3 vs 4 so you have to change the position of student. 
+
+
+Sample Input-2:
+---------------
+5
+5 1 4 2 3
+
+Sample Output-2:
+----------------
+5
+
+
+
+import java.util.*;
+class Test {
+    public int maximumHeight(int arr[], int size) {
+        int count = 0;
+        int sortedArray[] = Arrays.copyOf(arr, size);
+        Arrays.sort(sortedArray);
+        for (int i = 0; i < size; i++) {
+            if (arr[i] != sortedArray[i]) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int size = sc.nextInt();
+        int arr[] = new int[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = sc.nextInt();
+        }
+        System.out.println(new Test().maximumHeight(arr, size));
+    }
+}
+
+
+=============================================================================
+You are given a sentence s and an integer k. 
+You have to trim s such that it contains only the first k words. 
+Return s after trimming it.
+ 
+Input Format:
+-------------
+Line-1: Space separated strings, s.
+Line-2: An integer, k
+
+Output Format:
+--------------
+Print a string result, the trimmed string.
+
+
+Sample Input-1:
+---------------
+Hello how are you student
+4
+
+Sample Output-1:
+----------------
+Hello how are you
+
+Explanation: 
+-------------
+Explanation:
+The words in s are ["Hello", "how" "are", "you", "student"].
+The first 4 words are ["Hello", "how", "are", "you"].
+Hence, you should return "Hello how are you".
+
+Sample Input-2:
+---------------
+fried rice is not a biryani
+6
+
+Sample Output-2:
+----------------
+fried rice is not a biryani
+
+
+
+
+
+import java.util.*;
+class Test{
+    public String trimString(String str,int k){
+        String word[]=str.split("\\s+");
+        StringBuilder trimmedString=new StringBuilder();
+        for(int i=0;i<Math.min(k,word.length);i++){
+            trimmedString.append(word[i]).append(" ");
+        }
+        return trimmedString.toString().trim();
+    }
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+        int k=sc.nextInt();
+        System.out.println(new Test().trimString(str,k));
+    }
+}
+===========================================================================================
+Given the array of integers nums, you will choose two different indices i and j 
+of that array. 
+
+Return the maximum value of (nums[i]-1)*(nums[j]-1).
+ 
+input =4
+3 4 5 2
+output =12 
+If you choose the indices i=1 and j=2 (indexed from 0), you will get the maximum 
+value, that is, (nums[1]-1)*(nums[2]-1) = (4-1)*(5-1) = 3*4 = 12. 
+
+input =4
+1 5 4 5
+output =16
+Explanation: Choosing the indices i=1 and j=3 (indexed from 0), you will get the 
+maximum value of (5-1)*(5-1) = 16.
+
+input =2
+3 7
+output =12
+
+
+
+
+
+import java.util.*;
+class Test{
+    public int maximumValue(int arr[],int size){
+        int max=0;
+        int value;
+        for(int i=0;i<size;i++){
+            for(int j=i+1;j<size;j++){
+                value=(arr[i]-1)*(arr[j]-1);
+                if(value>max){
+                    max=value;
+                }
+            }
+        }
+        return max;
+    }
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int size=sc.nextInt();
+        int arr[]=new int[size];
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+        System.out.println(new Test().maximumValue(arr,size));
+    }
+}
+
+
+
+
+import java.util.*;
+class Main{
+    public int maximumValue(int arr[],int size){
+        int max=0;
+        int value;
+        for(int i=0;i<size;i++){
+            for(int j=i+1;j<size;j++){
+                value=(arr[i]-1)*(arr[j]-1);
+                max=Math.max(max,value);
+            }
+        }
+        return max;
+    }
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int size=sc.nextInt();
+        int arr[]=new int[size];
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+        System.out.println(new Main().maximumValue(arr,size));
+    }
+}
+
+
+
+import java.util.*;
+class Test{
+    public int maximumValue(int arr[],int size){
+        Arrays.sort(arr);
+        int x=arr[arr.length-1];
+        int y=arr[arr.length-2];
+        return (x-1)*(y-1);
+    }
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int size=sc.nextInt();
+        int arr[]=new int[size];
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+        System.out.println(new Test().maximumValue(arr,size));
+    }
+}
+======================================================================================
+Motu Patlu  are good friends, Motu loves to eat Samosas, 
+He is given N Boxes of samosas[], box-'a' has samosas[a].
+He can choose two boxes having highest number of samosas each time, 
+box-i and box-j, where  samosas[i] <= samosas[j].
+
+	If samosas[i] == samosas[j] , then eat all the samosas from both boxes;
+	If samosas[i] != samosas[j] , then eat all samosas from box-i, 
+	and from box-j eat only samosas[i] samosas, and left with ( samosas[j]-samosas[i] ) 
+	If the box becomes empty, remove the box.
+	
+At the end, there is at most 1 box left. Return the number of samosas left 
+in that box (or 0 if there are no boxes left.)
+
+
+Input Format:
+-------------
+N space separated integers, number of samosas[i] in box[i]
+
+Output Format: 
+--------------
+Print number of the samosas left at the end.
+
+
+Sample Input-1:
+---------------
+2 7 4 1 8 1
+
+Sample Output-1:
+----------------
+1
+
+Explanation:
+------------
+Boxes are numbered from 0,1,2,...,N-1.
+
+Motu selects, box-1 has 7 samosas and box-4 has 8 samosas eat 14 samosas, boxes becomes [2,4,1,1,1]
+Motu selects, box-0 has 2 samosas and box-1 has 4 samosas eat 4 samosas, boxes becomes [2,1,1,1]
+Motu selects, box-1 has 1 samosa and box-0 has 2 samosas eat 2 samosas, boxes becomes [1,1,1]
+Motu selects, box-0 has 1 samosa and box-1 has 1 samosa eat 2 samosas, boxes becomes [1]
+Finally left with 1 box, box contains 1 samosa in it.
+
+
+
+
+
+import java.util.*;
+class Test{
+    public static int samosasLeft(int arr[],int size){
+        //Arrays.sort(arr);
+        for(int i=size-1;i>0;i--){
+            Arrays.sort(arr);
+            int x=arr.length-2;
+            int y=arr.length-1;
+            if(arr[x]==arr[y]){
+                arr[x]=0;
+                arr[y]=0;
+            }
+            else if(arr[x]!=arr[y]){
+                arr[y]=arr[y]-arr[x];
+                arr[x]=0;
+            }
+        }
+        return arr[size-1];
+        
+    
+    }
+    
+    
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String str[]=sc.nextLine().split(" ");
+        int arr[]=new int[str.length];
+        for(int i=0;i<str.length;i++){
+            arr[i]=Integer.parseInt(str[i]);
+        }
+        
+        System.out.println(samosasLeft(arr,str.length));
+    }
+}
+
+
+=========================================================================================================
+
+In a cricket match,a batsman can score a maxium of one or zero. 
+The captain hari has been given the scores of the batsman in the match.
+Captain is intrested to write all the scores of the match in an particular order.
+He writes all zeros to the left and all ones to the right. 
+
+help Captain hari to arrange them accordingly
+
+He has been given the random scores of the batsman in a match.
+
+
+
+
+Input = 10
+0 1 0 1 0 0 1 1 1 0
+Output = 0 0 0 0 0 1 1 1 1 1
+
+input = 2
+0 1
+output = 0 1
+
+input = 3
+1 1 0
+output = 0 1 1 
+
+Note - The first line of input contains the number of players followed by player score
+
+
+
+
+import java.util.*;
+class Test {
+    public int[] arrangedScore(int arr[], int size) {
+        int count = 0;
+        for (int i = 0; i < size; i++) {
+            if (arr[i] == 0) {
+                count++;
+            }
+        }
+        for (int i = 0; i < count; i++) {
+            arr[i] = 0;
+        }
+        for (int i = count; i < size; i++) {
+            arr[i] = 1;
+        }
+        return arr;
+    }
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int size = sc.nextInt();
+        int arr[] = new int[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = sc.nextInt();
+        }
+        int[] arrangedArray = new Test().arrangedScore(arr, size);
+        for (int i = 0; i < size; i++) {
+            System.out.print(arrangedArray[i] + " ");
+        }
+    }
+}
+
+
+
+
+
+import java.util.*;
+class Main{
+    public static int[] arrangedScore(int arr[],int size){
+        Arrays.sort(arr);
+        return arr;
+    }
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int size=sc.nextInt();
+        int arr[]=new int[size];
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+         int arrangedScore[] = arrangedScore(arr, size);
+        for(int i=0;i<size;i++){
+            System.out.print(arrangedScore[i]+" ");
+        }
+    }
+}
+========================================================================================
+In a Coding Hackathon, each individual is given a score,
+
+if the scores of any 3 students meet the Target score, they will be given a prize.
+
+Please hello the Coding Hackathon team regarding the same.
+
+If you find any 3 students score equal to the target score, print true else false
+
+Input - The first line of input contains the number of students participating followed by student scores followed by target score. 
+
+input = 5
+10 20 30 40 50
+100
+output = true
+
+we have the scores {20,30,50} which meets the target score. 
+
+input = 5
+50 30 60 20 10
+40
+output = false
+
+we dont have the scores which meets the targest score (40)
+
+
+
+import java.util.*;
+class Test{
+    public boolean sumOfThree(int arr[],int target){
+    int n=arr.length;
+        for(int i=0;i<n-2;i++){
+            for(int j=i+1;j<n-1;j++){
+                for(int k=i+2;k<n;k++){
+                    if(arr[i]+arr[j]+arr[k]==target){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        int size=sc.nextInt();
+        int arr[]=new int[size];
+        for(int i=0;i<size;i++){
+            arr[i]=sc.nextInt();
+        }
+        int target=sc.nextInt();
+        System.out.println(new Test().sumOfThree(arr,target));
+    }
+}
+
+========================================================================================
+NOTE- USE RECURSION ONLY.
+
+DONT SIMPLY WRITE (X*Y)
+
+Given two numbers x and y find the product using recursion.
+
+Examples : 
+
+Input = 5 4
+Output = 20
+
+Input = 100 20
+Output =2000
+
+
+
+import java.util.*;
+class Test {
+    static int productOfTwo(int x, int y) {
+        if (y == 0 || x==0) {
+            return 0;
+        } else if (y > 0) {
+            return x + productOfTwo(x, y - 1);
+        } else {
+            return -productOfTwo(x, -y);
+        }
+    }
+
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+        int y = sc.nextInt();
+        System.out.println(productOfTwo(x, y));
+    }
+}
+
+
+
+
+public static int multiplyRecursive(int a, int b) {                                                  
+        
+        if (a == 0 || b == 0) 
+            return 0;
+        
+
+        if (a < 0 && b < 0)  // If both numbers are negative, convert them to positive and then multiply
+                return multiplyRecursive(-a, -b);
+
+        else if (a < 0)     // If only 'a' is negative, negate the result of the recursive call
+               return   (-1) * multiplyRecursive(-a, b);
+
+        else if (b < 0)  // If only 'b' is negative, negate the result of the recursive call            
+            return      (-1) * multiplyRecursive(a, -b);
+        
+
+        // Recursive case: multiply a by (b - 1) and add a to the result
+        // This effectively calculates a * b using recursion 
+        return a + multiplyRecursive(a, b - 1);
+    }
+
+========================================================================================
+
+In a Military Operation, The Army Chief is given the heights of the Himalayan Mountains. 
+The soldiers can attack if the heights of the mountains are in Z Fashion
+(if either all values are increasing or decreasing or first increasing and then decreasing). 
+
+Soldiers need to find whether the heights which falls in the given range has values in the form of a Z or not
+
+
+if the heights in the given range  [h1, h2, h3 … hN] is said to be in form of a Z if there exist an 
+integer K, 1 <= K <= N such that, 
+h1 <= h2 <= h3 .. <= hK >= h(K+1) >= h(K+2) …. >= hN 
+
+The Army Chief gives the soldiers the heights of the mountains followed by the range of the mountains 
+
+Examples: 
+
+Input = 2 3 2 4 4 6 3 2
+0 2
+Output =  true
+
+Explanation: The output is true , Z Fashion is [2 3 2], 
+heights first increases and then decreases
+
+Input = 2 3 2 4 4 6 3 2
+2 7
+Output = true
+
+Explanation: The output is true , Z fashion is [2 4 4 6 3 2], 
+heights first increases and then decreases
+
+
+Input = 2 3 2 4 4 6 3 2
+1 3
+Output = false
+
+Explanation: The output is false, Z fashion  is [3 2 4], 
+heights are  not in the form above stated
+
+
+
+
+import java.util.*;
+class Test{
+    public static boolean zFasion(int arr[],int st,int e){
+        int r=arr.length;
+       
+            if(arr[st]<=arr[st+1] && arr[r-2]>arr[r-1]){
+                return true;
+            }
+        
+        return false;
+    }
+    
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String str[]=sc.nextLine().split(" ");
+        int arr[]=new int[str.length];
+        for(int i=0;i<str.length;i++){
+            arr[i]=Integer.parseInt(str[i]);
+        }
+        int st=sc.nextInt();
+        int e=sc.nextInt();
+        System.out.println(zFasion(arr,st,e));
+    }
+}
+
+
+
+======================================================================================================
+
+T Strings. 
+
+Shyam reads a line of statement from the English Text Book. He is very fond of the Letter 't'/'T'.
+If a Word contains a Letter 't'/'T' he counts the numbers in the given word.
+
+Help Shyam to display the sum of the numbers in the word.
+
+if no numbers are found print 0
+
+for example:
+
+input = Tw1nkl3 to1 add4
+output =
+Tw1nkl3(4)
+to1(1)
+add4(0)
+
+input = add me
+output =
+add(0)
+me(0)
+
+
+
+
+import java.util.*;
+class Test {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a line of text: ");
+        String inputLine = sc.nextLine();
+        String[] words = inputLine.split("\\s+");
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i];
+            int sum = calculateSumOfNumbers(word);
+
+            System.out.println(word + "(" + sum + ")");
+        }
+    }
+    private static int calculateSumOfNumbers(String word) {
+        int sum = 0;
+        boolean containsT = false;
+        for (int j = 0; j < word.length(); j++) {
+            char c = word.charAt(j);
+
+            if (c == 'T' || c == 't') {
+                containsT = true;
+            }
+
+            if (Character.isDigit(c)) {
+                sum += Character.getNumericValue(c);
+            }
+        }
+
+        return containsT ? sum : 0;
+    }
+}
+
+========================================================================================
+
+Bob has given a year between 1900 to 1999 
+he has to write the year into words 
+
+
+Note - if any other year is given print INVALID 
+
+Few Examples
+
+input = 1980
+output = ONE NINE EIGHT ZERO
+
+input = 1900
+output = ONE NINE ZERO ZERO 
+
+input = 2003
+output = INVALID 
+
+
+
+import java.util.*;
+class Test{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int year = sc.nextInt();
+        String yearInWords = convertYearToWords(year);
+        System.out.println(yearInWords);
+    }
+    private static String convertYearToWords(int year) {
+        if (year < 1900 || year > 1999) {
+            return "INVALID";
+        }
+        StringBuilder result = new StringBuilder();
+        int thousands = year / 1000;
+        int hundreds = (year % 1000) / 100;
+        int tens = (year % 100) / 10;
+        int ones = year % 10;
+        result.append(convertDigitToWord(thousands))
+                .append(convertDigitToWord(hundreds))
+                .append(convertDigitToWord(tens))
+                .append(convertDigitToWord(ones));
+        return result.toString();
+    }
+    private static String convertDigitToWord(int digit) {
+        switch (digit) {
+            case 0:
+                return "ZERO ";
+            case 1:
+                return "ONE ";
+            case 2:
+                return "TWO ";
+            case 3:
+                return "THREE ";
+            case 4:
+                return "FOUR ";
+            case 5:
+                return "FIVE ";
+            case 6:
+                return "SIX ";
+            case 7:
+                return "SEVEN ";
+            case 8:
+                return "EIGHT ";
+            case 9:
+                return "NINE ";
+            default:
+                return ""; 
+        }
+    }
+}
+
+============================================================================
+Mr. Robert has an portrait photo with size M*N pixels, 
+where M is the length of the portrait and N is width of the portrait.
+ 
+You are given an integer S in pixels,
+Your task is to help Mr. Robert to find the actual values 
+[M, N] using the following specifications:
+	- The size of portrait should be equal to S. i.e., S = M*N.
+ 	- N is always smaller than in M, i.e., N <= M
+ 	- The diffrence between length and width, (M-N) should be minimum.
+ 	And print the result as a pair M and N.
+
+ NOTE: S is always a positive integer.
+ 
+Input Format:
+-------------
+Line-1 -> An integer S, size of the portrait.
+ 
+Output Format:
+--------------
+Print the result as a pair of integers.
+ 
+ 
+Sample Input-1:
+---------------
+24
+ 
+Sample Output-1:
+----------------
+6 4
+ 
+ 
+Sample Input-2:
+---------------
+550
+ 
+Sample Output-2:
+----------------
+25 22
+
+
+import java.util.*;
+class Test{
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        int S = sc.nextInt();
+        findPortraitSize(S);
+    }
+    private static void findPortraitSize(int S) {
+        int sqrtS = (int) Math.sqrt(S);
+        for (int N = sqrtS; N >= 1; N--) {
+            if (S % N == 0) {
+                int M = S / N;
+                System.out.println(M + " " + N);
+                break;
+            }
+        }
+    }
+}
+==================================================================================================
+Mr. Kejriwal purchased a digital clock, it shows the time in "hh:mm" 24 hr format.
+Due to technical issue, in the place of some digits ot displays '#' symbol.
+
+As Mr Kejriwal is an IIT student also, he got an idea to find the number of 
+valid times by replacing '#' with valid digits between 0-9.
+
+You are iven the time as a string T.
+Your task is to help Mr Kejriwal to find the number of possible valid times.
+
+NOTE:
+-----
+The valid time is in the range of 00:00 to 23:59.
+
+
+Input Format:
+-------------
+A string T, the time in the (24-hr) format as "hh:mm" 
+
+Output Format:
+--------------
+Print an integer result.
+
+
+Sample Input-1:
+---------------
+#6:00
+
+Sample Output-1:
+----------------
+2
+
+Explanation:
+------------
+The valid times after replacing # with 0 or 1, are "06:00", "16:00". 
+
+
+Sample Input-2:
+---------------
+0#:0#
+
+Sample Output-2:
+----------------
+100
+
+Explanation:
+------------
+To make the given time valid, replace 1st # with 0-9 digits and 2nd with the same.
+So, totally we have 100 ways.
+
+
+
+
+
+
+
+===================================================================================================
+Write a program to implement knapsack problem using Bruteforce approach.
+
+Input Format :
+--------------
+Line 1 : N space separated numbers, weigths[]
+Line 2 : N space separated numbers, values[]
+Line 3 : A number, capacity
+
+Output Format : 
+---------------
+Line 1 : Number, maximum profit / 0 for boundary conditions
+
+Sample Input 1 :
+----------------
+5 3 4
+20 40 30
+10
+
+Sample Output 1 :
+-----------------
+70
+
+Sample Input 2 :
+----------------
+5 3 4
+20 40 30
+0
+
+Sample Output 2 :
+-----------------
+0
+
+
+
+
+
+
+================================================================================================================
+Write a program to perform string matching a.k.a pattern matching.
+
+Input Format :
+--------------
+Line 1 : A string for main string
+Line 2 : A string for pattern
+
+Output Format :
+---------------
+Line 1 : A number, index(if pattern found return first occurance) or -1(element not found)
+
+Sample Input 1 :
+----------------
+hello
+ll
+
+Sample Output 1 :
+-----------------
+2
+
+Sample Input 2 :
+----------------
+123456789
+567
+
+Sample Output 2 :
+-----------------
+4
+
+Sample Input 3 :
+----------------
+helloworld
+xyz
+
+Sample Output  :
+-----------------
+-1
+
+
+
+import java.util.*;
+class Test{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the main string:");
+        String str = scanner.nextLine();
+        System.out.println("Enter the pattern:");
+        String str1 = scanner.nextLine();
+        int result = matchString(str, str1);
+        System.out.println(result);
+    }
+    private static int matchString(String str, String str1) {
+        int strLength = str.length();
+        int str1Length = str1.length();
+        for (int i = 0; i <= strLength - str1Length; i++) {
+            int j;
+            for (j = 0; j < str1Length; j++) {
+                if (str.charAt(i + j) != str1.charAt(j)) {
+                    break;
+                }
+            }
+            if (j == str1Length) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import java.util.*;
+class Test{
+    public static int patternMatch(String str,String str1){
+        for(int i=0;i<str.length();i++){
+            if(str.contains(str1)&&(str1.charAt(0)==str.charAt(i))){
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+        String str1=sc.nextLine();
+        System.out.println(patternMatch(str,str1));
+    }
+}
+*/
+
+
+
+======================================================================================
+You are Given an array of length of n , find the majority element.
+
+The majority element is the element that appears more than [n / 2] times.
+You may assume that the majority element always exists in the array.
+
+Note: Solve it using divide and conquer technique
+
+Input Format :
+--------------
+Line-1 : N space separated numbers, list[]
+ 
+Output Format :
+---------------
+Line-1 : A number, largest element in array
+
+Sample Input :
+--------------
+1 2 4 5 1 1 1
+
+Sample Output :
+---------------
+1
+
+Sample Input :
+--------------
+6 2 6
+
+Sample Output :
+---------------
+6
+
+Hint : creating more functions will make the solution more simpler
+
+
+
+
+
+
+
+
+==========================================================================================
+Assume you are an awesome parent and want to give your children some cookies. 
+But, you should give each child at most one cookie.
+Each child i has a greed factor g[i], which is the minimum size of a cookie that the child will be content with; 
+and each cookie j has a size s[j]. 
+If s[j] >= g[i], we can assign the cookie j to the child i, and the child i will be content. 
+Your goal is to maximize the number of your content children and print the maximum number.
+ 
+Example:
+Input: g = [1,2,3], s = [1,1]
+Output: 1
+
+Explanation: You have 3 children and 2 cookies. The greed factors of 3 children are 1, 2, 3. 
+And even though you have 2 cookies, since their size is both 1, you could only make the child whose greed factor is 1 content.
+You need to output 1.
+
+
+Input Format :
+--------------
+Line 1 : An array of N elements, greed factors
+Line 2 : An array of N elements, size of each cookie
+
+Output Format :
+---------------
+Line 1 : A number, the maximum cookie allocation.
+
+Sample Input 1 :
+----------------
+1 2 3
+1 1
+Sample Output 1 :
+-----------------
+1
+
+Sample Input 2 :
+----------------
+1 2
+1 2 3
+Sample Output 2 :
+-----------------
+2
+
+Sample Input 3 :
+----------------
+7 8 9 10
+5 6 7 8
+Sample Output 3 :
+-----------------
+2
+
+
+
+
+
+===================================================================================
+greedy method approach 
+
+James is the owner of a grocery store. James always wants to return the minimum number of 
+notes to his customers. A customer comes to his store and buys groceries of cost 'x'
+amount and he gives 'Y' (Y > X) amount to James. 
+James calculated the change he need to return to the customer, now its your task to 
+help james return the amount using minimum number of notes.
+The possible denominations are [1, 2, 5, 10, 20, 50, 100, 500, 1000]. 
+Assume that you have enough amount of all denominations.
+Given the change to be returned to customer as input, return 
+the array of minimum possible coins that sum up to the change.
+
+Example1:
+Input: 43
+Output: [20, 20, 2, 1]
+
+Explanation:You have to give 43 amount and inorder to pick minimum coins you selected
+the coins 20,20,2,1
+
+Input Format :
+--------------
+Line 1 : A number for Amount 
+
+Output Format :
+---------------
+Line 1 : An array of N elements, minimum possible coins
+
+Sample Input 1:
+--------------
+43
+
+Sample Output 1:
+---------------
+[20, 20, 2, 1]
+
+Sample Input 2:
+---------------
+1000
+
+Sample Output 2:
+----------------
+[1000]
+
+
+
+
+
+
+
+
+=============================================================================================================
+Write a Java program to BINARY SEARCH on a given array elements.
+
+Input Format :
+--------------
+Line 1 : A number to search
+Line 2 : An array of N elements
+
+Output Format :
+---------------
+Line 1 : A String, Element Exists(if element found) or -Element NOT Exists(element not found)
+
+
+Sample Input 1 :
+----------------
+53
+45 53 67 78 86 89 99
+
+Sample Output 1 :
+-----------------
+Element Exists
+
+Sample Input 2 :
+----------------
+100
+45 53 67 78 86 89 99
+
+Sample Output 2 :
+-----------------
+Element NOT Exists
+
+
+
+
+
+
+=============================================================================================================
+/*Input Number of vertices
+Input Number of edges
+Input Adjecency Matrix, Each row containing sourse and destination nodes.
+
+Input Source node.
+Write Java program to print BFS traversal from a given graph*/
+
+import java.util.*;
+class Graph {
+    private int numVertices;
+    private LinkedList<Integer>[] adjList;
+    public Graph(int numVertices) 
+    {
+        this.numVertices = numVertices;
+        adjList = new LinkedList[numVertices];
+        for (int i = 0; i < numVertices; i++) 
+        {
+            adjList[i] = new LinkedList<>();
+        }
+    }
+    public void addEdge(int source, int destination) 
+    {
+        adjList[source].add(destination);
+    }
+    public void bfs(int startVertex) 
+    {
+        //WRITE YOUR CODE HERE
+        boolean[] visited=new boolean[numVertices];
+        Queue<Integer> queue=new LinkedList<Integer>();
+        visited[startVertex]=true;
+        queue.add(startVertex);
+        while(!queue.isEmpty()){
+            int currentVertex=queue.poll();
+            System.out.println(currentVertex);
+            for(int neighbour:adjList[currentVertex])
+            if(!visited[neighbour]){
+                visited[neighbour]=true;
+                queue.add(neighbour);
+            }
+        }
+    }
+}
+class BFS 
+{
+    public static void main(String[] args) 
+    {
+        Scanner scanner = new Scanner(System.in);
+        //System.out.print("Enter the number of vertices: ");
+        int numVertices = scanner.nextInt();
+        Graph graph = new Graph(numVertices);
+        //System.out.print("Enter the number of edges: ");
+        int numEdges = scanner.nextInt();
+        //System.out.println("Enter edges (source destination):");
+        for (int i = 0; i < numEdges; i++) 
+        {
+            int source = scanner.nextInt();
+            int destination = scanner.nextInt();
+            graph.addEdge(source, destination);
+        }
+       // System.out.print("Enter the starting vertex for BFS: ");
+        int startVertex = scanner.nextInt();
+        graph.bfs(startVertex);
+    }
+}
+
+
+
+==============================================================================================
+/*
+You are playing a online video game, you will be given an m x n 2D binary grid, grid which represents a map of '1's (land) and '0's (water),you have to find the number of islands in the given grid.
+
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+
+Input Format:
+-------------
+Line-1: Two space separated integers M and N, size of the grid.
+Next M lines: N space separated integers, either 0 or 1.
+
+Output Format:
+--------------
+Print an integer, Number of islands .
+
+
+Sample Input-1:
+---------------
+5 5
+1 1 1 1 1
+1 0 0 0 1
+1 0 0 0 1
+1 0 0 0 1
+1 1 1 1 1
+output=1
+
+Sample Input-2:
+---------------
+5 5
+1 1 0 1 1
+1 0 0 0 1
+0 0 1 0 0
+1 0 0 1 1
+1 1 0 0 1
+
+Sample Output-2:
+----------------
+5
+case =1
+input =4 5
+1 1 0 0 0
+1 1 0 0 0
+0 0 0 1 1
+1 0 0 1 1
+output =3
+*/
+
+import java.util.*;
+class numberOfIslands_bfs {
+    public int numIslands(int[][] grid) {
+        if (grid == null || grid.length == 0 || grid[0].length == 0) {
+            return 0;
+        }
+        int rows = grid.length;
+        int cols = grid[0].length;
+        int count = 0;
+
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                if (grid[row][col] == 1) {
+                    bfs(grid, row, col);
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+    private void bfs(int[][] grid, int row, int col) 
+    {
+        //write your code here
+    }
+    private boolean isValid(int[][] grid, int row, int col) {
+        int rows = grid.length;
+        int cols = grid[0].length;
+        return row >= 0 && col >= 0 && row < rows && col < cols;
+    }
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int m = sc.nextInt();
+        int n = sc.nextInt();
+        int grid[][] = new int[m][n];
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                grid[i][j] = sc.nextInt();
+
+        System.out.println(new numberOfIslands_bfs().numIslands(grid));
+    }
+}
+
+
+
+================================================================================================
+/*
+You are playing a online video game, you will be given an m x n 2D binary grid, grid which represents a map of '1's (land) and '0's (water),you have to find the number of islands in the given grid.
+
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+
+Input Format:
+-------------
+Line-1: Two space separated integers M and N, size of the grid.
+Next M lines: N space separated integers, either 0 or 1.
+
+Output Format:
+--------------
+Print an integer, Number of islands .
+
+
+Sample Input-1:
+---------------
+5 5
+1 1 1 1 1
+1 0 0 0 1
+1 0 0 0 1
+1 0 0 0 1
+1 1 1 1 1
+output=1
+
+Sample Input-2:
+---------------
+5 5
+1 1 0 1 1
+1 0 0 0 1
+0 0 1 0 0
+1 0 0 1 1
+1 1 0 0 1
+
+Sample Output-2:
+----------------
+5
+case =1
+input =4 5
+1 1 0 0 0
+1 1 0 0 0
+0 0 0 1 1
+1 0 0 1 1
+output =3
+*/
+
+import java.util.*;
+class numberOfIslands_bfs {
+    public int numIslands(int[][] grid) {
+        if (grid == null || grid.length == 0 || grid[0].length == 0) {
+            return 0;
+        }
+        int rows = grid.length;
+        int cols = grid[0].length;
+        int count = 0;
+
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < cols; col++) {
+                if (grid[row][col] == 1) {
+                    bfs(grid, row, col);
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+    private void bfs(int[][] grid, int row, int col) 
+    {
+        //write your code here
+        int[][] dirs = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+        Queue<int[]> queue = new LinkedList<>();
+        queue.offer(new int[]{row, col});
+        grid[row][col] = 0; 
+        while (!queue.isEmpty()) {
+            int[] cell = queue.poll();
+            for (int[] dir : dirs) {
+                int newRow = cell[0] + dir[0];
+                int newCol = cell[1] + dir[1];
+                if (isValid(grid, newRow, newCol) && grid[newRow][newCol] == 1) {
+                    queue.offer(new int[]{newRow, newCol});
+                    grid[newRow][newCol] = 0;
+                }
+            }
+        }
+        
+    }
+    private boolean isValid(int[][] grid, int row, int col) {
+        int rows = grid.length;
+        int cols = grid[0].length;
+        return row >= 0 && col >= 0 && row < rows && col < cols;
+    }
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int m = sc.nextInt();
+        int n = sc.nextInt();
+        int grid[][] = new int[m][n];
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                grid[i][j] = sc.nextInt();
+
+        System.out.println(new numberOfIslands_bfs().numIslands(grid));
+    }
+}
+
+
+=======================================================================================================================
+/*
+Jadav Payeng, "The Forest Man of India", 
+started planting the seeds in a M*N grid land.
+Each cell in the grid land is planted with a seed.
+After few days, some seeds grow into saplings indicates with '1',
+and the rest are dead seeds indicates with '0'.
+
+One or more saplings are connected either horizontally, vertically or diagonally with each other, form a sapling-group. 
+There may be zero more sapling-groups in the grid land.
+
+Jadav Payeng wants to know the biggest sapling-group in that grid land.
+
+You are given the M * N grid, filled with 0's and 1's.
+You are task is to help Jadav Payeng to find the number of saplings in 
+the largest sapling-group.
+
+Input Format:
+-------------
+Line-1: Two integers M and N, the number of rows and columns in the grid-land.
+Next M lines: contains N space-separated integers .
+
+Output Format:
+--------------
+Print an integer, the number of saplings in the 
+largest sapling-group in the given grid-land.
+
+Sample Input-1:
+---------------
+5 4
+0 0 1 1
+0 0 1 0
+0 1 1 0
+0 1 0 0
+1 1 0 0
+
+Sample Output-1:
+----------------
+8
+
+
+Sample Input-2:
+---------------
+5 5
+0 1 1 1 1
+0 0 0 0 1
+1 1 0 0 0
+1 1 0 1 1
+0 0 0 1 0
+
+Sample Output-2:
+----------------
+5
+
+*/
+import java.util.*;
+
+public class MaxArea_BFS 
+{
+    public static int solve(int[][] grid) 
+	{
+        if (grid == null || grid.length == 0) 
+			return 0;
+        int res = 0;
+        int curr = 0;
+
+        for (int i = 0; i < grid.length; i++)
+		{
+            for (int j = 0; j <grid[0].length; j++)
+			{
+                if (grid[i][j] == 1) 
+				{
+                    grid[i][j] = 0;
+                    curr = bfs(grid, i, j);
+                    res = Math.max(curr, res);
+                }
+            }
+        }
+        return res;
+    }
+    
+    private static int bfs(int[][] grid, int k, int l)
+	{
+        //WRITE YOUR CODE HERE
+        int[][] dirs = {{1, 0}, {0, 1}, {-1, 0}, {0, -1},{-1,-1},{-1,1},{1,1},{1,-1}};
+        Queue<int[]> queue = new LinkedList<>();
+        queue.offer(new int[]{k, l});
+        grid[k][l] = 0;
+        int area=0;
+        while (!queue.isEmpty()) {
+            int[] cell = queue.poll();
+            area++;
+            for (int[] dir : dirs) {
+                int newRow = cell[0] + dir[0];
+                int newCol = cell[1] + dir[1];
+                if (isValid(grid, newRow, newCol) && grid[newRow][newCol] == 1) {
+                    queue.offer(new int[]{newRow, newCol});
+                    grid[newRow][newCol] = 0; 
+                }
+            }
+        }
+        return area;
+    }
+    private static boolean isValid(int[][] grid, int k, int l) {
+        int rows = grid.length;
+        int cols = grid[0].length;
+        return k >= 0 && l >= 0 && k < rows && l < cols;
+    }
+    public static void main(String[] args) 
+	{
+        Scanner in = new Scanner(System.in);
+        int m = in.nextInt();
+        int n = in.nextInt();
+        int[][] board = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                board[i][j] = in.nextInt();
+            }
+        }
+       System.out.println(new MaxArea_BFS().solve(board));
+    }
+}
+
+================================================================================================================================
+/*
+Viraj Aanand is a wedding planner, He order his assistant to decorate a wall.
+The decorator plans to decorate the wall with two different colored balloons.
+The wall size is M*N, The decorator can decorate the wall using M*N balloons
+the balloons are blue or white in color.
+
+Blue colored ballons represented with digit-1 and 
+White colored ballons represented with digit-0.
+
+The blue colored balloons forms different shapes, that are connected 4 directonally.
+The directons are upwards, downwards, left, and right. Viraj Aanand got an idea to 
+count the unique shapes formed by blue colored ballons.
+
+You will be given the decorated wall as a matrix wall[][].
+Your task is to help, Viraj Aanand to count the unique shapes.
+
+Input Format:
+-------------
+Line-1: Two space separated integers M and N, size of the wall.
+Next M lines: N space separated integers, either 0 or 1.
+
+Output Format:
+--------------
+Print an integer, Number of distinct shapes formed by blue balloons.
+
+
+Sample Input-1:
+---------------
+4 5
+1 1 0 0 0
+1 1 0 0 0
+0 0 0 1 1
+0 0 0 1 1
+
+Sample Output-1:
+----------------
+1
+
+Sample Input-2:
+---------------
+5 5
+1 1 0 1 1
+1 0 0 0 1
+0 0 0 0 0
+1 0 0 0 1
+1 1 0 1 1
+Sample Output-2:
+----------------
+4
+
+Note: 
+-------
+The shapes, 
+1 1  		  1 1
+1     and    1 
+are different.
+ 
+*/
+
+import java.util.*;
+class DistinctIslands_BFS 
+{
+    public int numDistinctIslands(int[][] grid) 
+	{
+		Set<String> islands = new HashSet<>();
+        for(int row = 0; row < grid.length; row++)
+		{
+            for(int col = 0; col < grid[0].length; col++) 
+			{
+                if(grid[row][col] == 1) 
+				{
+                    String island = bfs(grid, row , col);
+                    islands.add(island);
+                }
+            }
+        }
+        return islands.size();
+	}
+
+	private String bfs(int[][] grid, int row, int col) 
+	{
+        //WRITE YOUR CODE HERE
+        int[][] dirs = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+        char[] direction={'r','d','l','u'};
+        Queue<int[]> queue = new LinkedList<>();
+        queue.offer(new int[]{row, col});
+        grid[row][col] = 0; 
+        StringBuilder island=new StringBuilder();
+        while (!queue.isEmpty()) {
+            int[] cell = queue.poll();
+            for(int i=0;i<dirs.length;i++){
+                int newRow = cell[0] + dirs[i][0];
+                int newCol = cell[1] + dirs[i][1];
+                if (inBound(grid.length,grid[0].length, newRow, newCol) && grid[newRow][newCol] == 1) {
+                    queue.offer(new int[]{newRow, newCol});
+                    grid[newRow][newCol] = 0;
+                    island.append(direction[i]);
+                }
+            }
+        }
+        return island.toString();
+    }
+    
+    private boolean inBound(int rows, int cols, int row, int col) 
+	{
+        return row >= 0 && col >= 0 && row < rows && col < cols;
+    }
+	
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		int m=sc.nextInt();
+		int n=sc.nextInt();
+		int grid[][]=new int[m][n];
+		for(int i=0;i<m;i++)
+			for(int j=0;j<n;j++)
+				grid[i][j]=sc.nextInt();
+
+		System.out.println(new DistinctIslands_BFS().numDistinctIslands(grid));
+	}
+}
+=========================================================================================================
+# 0 to n prime numbers
+
+A **prime number** is a positive integer greater than 1 that is only divisible by 1 and itself.
+
+*For example*: 2, 3, 5, 7, 11 are the first five prime numbers.
+
+## Problem Statement
+
+Print all Prime numbers between 1 to <n>
+
+### Input Format
+
+*Line #1*: An **integer** <n>        { $-10^4 < n < 10^7$ }
+
+### Output Format
+
+For each test case, print the **prime numbers**<number> separated by space in between, 
+from **0** to given number **n**.
+
+
+input = 100
+output = 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======================================================================================================
+
+Given an group of numbers check if the target sum can be achieved by adding the given elements of the array in 
+order to achieve the target sum.
+
+Note : You can use any number element of the array any number of times
+Print true if it possible else false
+
+The first line of input contains the size of array followed by array elements followed by target sum
+
+INPUT
+5
+3 7 0 9 1
+15
+OUTPUT 
+true
+
+Explanation-
+
+=> arr[1] + arr[1] + arr[4]
+=>   7    +   7    +   1
+=> 15
+
+OR
+
+=> arr[0] + arr[0] + arr[0] + arr[0] + arr[0]
+=>   3    +   3    +   3    +   3    +   3
+=> 15
+
+Although there are more possibilities for this target sum problem, 
+we will print true based on the above situation.
+
+
+
+
+
+import java.util.Scanner;
+
+public class Test{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the size of the array: ");
+        int size = scanner.nextInt();
+        int[] arr = new int[size];
+        System.out.print("Enter the array elements: ");
+        for (int i = 0; i < size; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        System.out.print("Enter the target sum: ");
+        int targetSum = scanner.nextInt();
+        System.out.println("Output: " + canAchieveTargetSum(arr, targetSum));
+    }
+    private static boolean canAchieveTargetSum(int[] arr, int targetSum) {
+        return canAchieveTargetSumHelper(arr, targetSum, 0);
+    }
+    private static boolean canAchieveTargetSumHelper(int[] arr, int targetSum, int currentIndex) {
+        if (targetSum == 0) {
+            return true;
+        }
+        if (currentIndex == arr.length) {
+            return false;
+        }
+        if (arr[currentIndex] <= targetSum) {
+            if (canAchieveTargetSumHelper(arr, targetSum - arr[currentIndex], currentIndex)) {
+                return true;
+            }
+        }
+        return canAchieveTargetSumHelper(arr, targetSum, currentIndex + 1);
+    }
+}
+
+
+
+=====================================================================================================
+Given an integer array nums, find the contiguous subarray (containing at least one number) 
+which has the largest sum and return its sum.
+
+A subarray is a contiguous part of an array.
+
+Sample Input 1:
+--------------
+-2 1 -3 4 -1 2 1 -5 4
+
+Sample Output 1:
+----------------
+6
+
+Explanation: [4,-1,2,1] has the largest sum = 6.
+
+Sample Input 2:
+--------------
+1 2 3 4 5
+
+Sample Output 2:
+----------------
+15
+
+
+
+
+
+
+
+
+====================================================================================================
